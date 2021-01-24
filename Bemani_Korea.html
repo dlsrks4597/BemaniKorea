@@ -1,0 +1,3569 @@
+﻿
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+	<title>Bemani Korea</title>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<!--이미지 슬라이더 css(swiper, bxslider)-->
+	<!--#3159AD-->
+	<link rel="stylesheet" href="./css/swiper.min.css">
+	<link rel="stylesheet" href="./css/jquery.bxslider.css" />
+	<link rel="stylesheet" href="./css/jquery.bxslider.min.css" />
+	<!--디자인 css-->
+	<link rel="stylesheet" href="./css/fonts.css">
+	<link rel="stylesheet" href="./css/common.css">
+	<link rel="stylesheet" href="./css/layout.css">
+	<link rel="stylesheet" href="./css/slick.css">
+	<!--배경 디자인 css-->
+	<link rel="stylesheet" href="./css/bemani_korea.css">
+	<link rel="stylesheet" href="./css/bemani_korea.min.css">
+	<!-- js -->
+	<script src="./js/jquery.bxslider.js"></script>
+	<script src="./js/jquery.bxslider.min.js"></script>
+	<script src="./js/jquery.min.js"></script>
+	<script src="./js/slick.min.js"></script>
+	<script src="./js/common.js"></script>
+	<script src="./js/ajax-xml.js"></script>
+	<script src="./js/ajax-html.js"></script>
+	<script src="./js/ajax-json.js"></script>
+	<script src="./js/jquery-animate-css-rotate-scale.js"></script>
+	<style>
+		li {
+			list-style: none;
+		}
+
+		.picture {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+
+		.picture li {
+			float: left;
+			width: 50%;
+		}
+
+		.picture li a {
+			display: block;
+			margin: 5px;
+			border: 1px
+		}
+
+		.picture li img {
+			display: block;
+			width: 50%;
+			height: auto;
+		}
+
+		.picture li img:hover {
+			display: block;
+			width: 100%;
+			height: auto;
+		}
+
+		html {
+			position: relative;
+			height: 100%;
+		}
+
+		img {
+			max-width: 100%;
+			height: auto;
+		}
+
+		.jubeat-center {
+			width: 100%;
+			text-align: center;
+		}
+
+		body {
+			background: #eee;
+			font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+			font-size: 14px;
+			color: #000;
+			margin: 0;
+			padding: 0;
+		}
+
+		.menu-trigger.active span : nth-of-type (1) {
+			-webkit-transform: translateY (20px) rotate (-45deg);
+			transform: translateY (20px) rotate (-45deg);
+		}
+
+		.menu-trigger.active span : nth-of-type (2) {
+			left: 50 %;
+			opacity: 0;
+			-webkit-animation: active-menu-bar02 .8s forwards;
+			animation: active-menu-bar02 .8s forwards;
+		}
+
+		@ -webkit-keyframes active-menu-bar02 {
+			100 % {
+				height: 0;
+			}
+		}
+
+		@keyframes active-menu-bar02 {
+			100 % {
+				height: 0;
+			}
+		}
+
+		.menu-trigger.active span : nth-of-type (3) {
+			-webkit-transform: translateY (-20px) rotate (45deg);
+			transform: translateY (-20px) rotate (45deg);
+		}
+
+		/*swiper 추가 css*/
+		.swiper-container {
+			width: 100%;
+			height: 100%;
+		}
+
+		.swiper-slide {
+			text-align: center;
+			font-size: 18px;
+			background: #fff;
+
+			/* Center slide text vertically */
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: -webkit-flex;
+			display: flex;
+			-webkit-box-pack: center;
+			-ms-flex-pack: center;
+			-webkit-justify-content: center;
+			justify-content: center;
+			-webkit-box-align: center;
+			-ms-flex-align: center;
+			-webkit-align-items: center;
+			align-items: center;
+		}
+
+		/*맵뷰*/
+		.map-responsive {
+			overflow: hidden;
+			padding-bottom: 56.25%;
+			position: relative;
+			height: 0;
+		}
+
+		.map-responsive iframe {
+			left: 0;
+			top: 0;
+			height: 100%;
+			width: 100%;
+			position: absolute;
+		}
+
+		.games_thumbnail {
+			height: 30%;
+			width: 30%;
+			float: left;
+			padding: 3px 3px 3px 3px;
+		}
+
+		.right-button {
+			float: right;
+			height: 8%;
+			width: 35%;
+			font-size: 1em;
+		}
+
+		/*표 css*/
+
+		.section .top-btn a {
+			display: block;
+			color: #fff !important;
+			padding: 10px;
+		}
+
+		/*표 css*/
+
+		table.game-start {
+			font-size: 12px;
+		}
+
+		table.game-start tr:nth-child(odd) {
+			background-color: #ccc;
+		}
+
+		table.game-start tr:nth-child(even) {
+			background-color: #fff;
+		}
+
+		table.game-start td:first-child {
+			width: 140px;
+			border-right: 1px solid #000;
+		}
+
+		table.game-start tr {
+			border: 1px solid #000;
+		}
+
+		table.game-start2 {
+			vertical-align: top;
+			font-size: 16px;
+		}
+
+		table.game-start2 tr:nth-child(odd) {
+			background-color: #fff;
+		}
+
+		table.game-start2 tr:nth-child(even) {
+			background-color: #fff;
+		}
+
+		table.game-start2 td:first-child {
+			width: 140px;
+			border-right: 1px solid #000;
+		}
+
+		table.game-start2 tr {
+			border: 1px solid #000;
+		}
+
+
+		/*
+#header_mode{
+   display:none;
+}
+@media only screen and (device-width: 768px) and (orientation: landscape) {
+  #header_mode{
+    display: block;
+  }
+}
+
+@media only screen and (min-device-width: 320px) and (orientation: landscape) {
+  #header_mode{
+    display: block;
+  }
+}
+*/
+		.sns ul {
+			margin-top: 8px;
+			display: table;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		.sns:after {
+			content: "";
+			display: block;
+			clear: both;
+		}
+
+		.sns ul li {
+			float: left;
+			font-size: 10px;
+			font-weight: bold;
+		}
+
+		.sns ul li:after {
+			content: "";
+			display: block;
+			clear: both;
+		}
+
+		.profile_photo {
+			width: 100px;
+			height: 100px;
+			object-fit: cover;
+			object-position: top;
+			border-radius: 50%;
+		}
+
+		/*프로필 패널 너비조정*/
+		.ui-panel {
+			width: 14em
+		}
+	</style>
+</head>
+
+<body>
+	<br><br>
+	<br><br>
+	<br><br>
+
+	<!--헤더 메뉴-->
+	<div id="header">
+		<h1><a href="#home" data-transition="slide" class="subtitle_3 stopVideo" style="color:#3159AD">BEMANI Korea</a></h1>
+
+		<div class="btn_menu">
+			<a href="http://Final_Test.html#" onclick="return false;">
+				<span></span>
+				<span></span>
+				<span></span>
+			</a>
+		</div>
+		<div class="btn_lang">
+			<a href="#" data-transition="slideleft" class="stopVideo" onclick="goBack()">Back</a>
+		</div>
+		<div class="lnb_wrap" style="display: none; margin-top: -100%;">
+			<a href="http://Final_Test.html#" class="btn_close" onclick="return false;">
+				<img src="./files/btn_closex.png" alt="close">
+			</a>
+			<ul>
+				<li><a href="#games" data-transition="slide">Games</a></li>
+				<li><a href="#company" data-transition="slide">Company</a></li>
+				<li><a href="#news" data-transition="slide" id="jsonload">News</a></li>
+				<li><a href="#bmk" data-transition="slide">Bemani Master Korea</a></li>
+				<li><a href="https://p.eagate.573.jp/" target="_blank">KONAMI eAMUSEMENT</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<!--헤더 햄버거메뉴 스크립트-->
+	<script type="text/javascript">
+		$(".lnb_wrap > a.btn_close").click(function() {
+			$(".lnb_wrap").animate({
+				"margin-top": "-100%"
+			}, 250, function() {
+				$(".lnb_wrap").hide();
+			});
+		});
+		$(".btn_menu > a").click(function() {
+			$(".lnb_wrap").show();
+			$(".lnb_wrap").animate({
+				"margin-top": "0"
+			}, 250);
+		});
+		/*
+				$(window).on("orientationchange",function(){
+				   if(window.orientation == 0) // Portrait
+				      {
+				         $('#header_mode').removeClass('header_vertical');
+								 $('#header_mode').addClass('header_horizontal');
+				      }
+				   else // Landscape
+				      {
+								 $('#header_mode').removeClass('header_horizontal');
+				         $('#header_mode').addClass('header_vertical');
+				      }
+				});
+
+		window.onload = function() {
+		$("document").ready(function() {
+			$(window).trigger("orientationchange");
+		});
+
+		$(window).bind("orientationchange", function(e) {
+			var orientation = window.orientation;
+
+			if (orientation == 90 || orientation == -90) {
+				//alert("landscape");//가로
+				$('#header').detach();
+				$('#header2').appendTo('#header2_mode');
+			} else {
+				//alert("portrait");//세로
+				$('#header2').detach();
+				$('#header').appendTo('#header_mode');
+			}
+
+		});
+	}	*/
+	</script>
+	<!--Header의 Back 버튼 누를 때 뒤로가기 스크립트-->
+	<script>
+		function goBack() {
+			window.history.back();
+		}
+	</script>
+
+	<!--동영상 실행 도중 다른 화면으로 넘어갈 때 실행중인 동영상을 중지하는 스크립트-->
+	<script>
+		window.onpageshow = function(event) {
+			if (event.persisted) { //뒤로가기 시
+				jQuery("iframe").each(function() {
+					jQuery(this)[0].contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*')
+					//iframe형식의 유튜브 영상 중지
+				});
+				vid.pause(); //video태그의 영상 중지
+				vid2.pause();
+			} else {
+				jQuery("iframe").each(function() { //새 창 실행 시
+					jQuery(this)[0].contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*')
+				});
+				vid.pause();
+				vid2.pause();
+			}
+		};
+	</script>
+
+
+	<!--메인메뉴-->
+	<div data-role="page" id="home" class="inner">
+
+		<!--
+		<div data-role="header" >
+
+			<a href="#page2" class="ui-btn-left" data-icon="bars"></a>
+			<h1><img src="./files/logo_uniana.gif" alt="UNIANA"></h1>
+		</div> -->
+		<div data-role"header">
+
+		</div>
+		<br />
+		<br />
+		<br />
+		<br />
+		<div data-role="content" style="text-align:center">
+			<!-- Swiper -->
+			<div class="swiper-container">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide">
+						<a href="#games_popn" data-transition="slide"><img src="./files/popn.jpg" alt="popn"></a>
+					</div>
+					<div class="swiper-slide">
+						<a href="#games_dancerush" data-transition="slide"><img src="./files/dancerush.jpg" alt="dancerush"></a>
+					</div>
+					<div class="swiper-slide">
+						<a href="#games_iidx" data-transition="slide"><img src="./files/iidx.jpg" alt="iidx"></a>
+					</div>
+					<div class="swiper-slide">
+						<a href="#games_sdvx" data-transition="slide"><img src="./files/sdvx.jpg" alt="sdvx"></a>
+					</div>
+					<div class="swiper-slide">
+						<a href="#games_nostalgia" data-transition="slide"><img src="./files/nostalgia.jpg" alt="nostalgia"></a>
+					</div>
+					<div class="swiper-slide">
+						<a href="#games_jubeat" data-transition="slide"><img src="./files/jubeat.jpg" alt="jubeat"></a>
+					</div>
+					<div class="swiper-slide">
+						<a href="#games_gitadora" data-transition="slide"><img src="./files/gitadora.jpg" alt="gitadora"></a>
+					</div>
+				</div>
+				<!-- Add Pagination -->
+				<div class="swiper-pagination"></div>
+				<!-- Add Arrows-->
+				<div class="swiper-button-next"></div>
+				<div class="swiper-button-prev"></div>
+			</div>
+
+			<!-- Swiper JS -->
+			<script src="./js/swiper.min.js"></script>
+
+			<!-- Initialize Swiper -->
+			<script>
+				// window.onload = function() {
+				$(document).ready(function() {
+					var swiper = new Swiper('.swiper-container', {
+						//pagination: '.swiper-pagination',
+						nextButton: '.swiper-button-next',
+						prevButton: '.swiper-button-prev',
+						//initialSlide: 0,
+						paginationClickable: true,
+						spaceBetween: 30,
+						centeredSlides: true,
+						autoplay: 2750,
+						autoplayDisableOnInteraction: false
+					});
+				});
+			</script>
+
+			<script>
+				$(function() {
+					$('.wrap-img2').hover(
+						function() {
+							$(this).find('img').animate({
+								scale: '+=0.2'
+							}, 300);
+						},
+						function() {
+							$(this).find('img').animate({
+								scale: '-=0.2'
+							}, 300);
+						}
+					);
+				});
+			</script>
+
+			<!--iframe 형식의 유튜브 영상 중지 (한번 더 있는 이유는 네비게이션바 실행 시에도 중지해야 하기 때문) -->
+			<script>
+				$(document).ready(function() {
+					$(".stopVideo").click(function() {
+						jQuery("iframe").each(function() {
+							jQuery(this)[0].contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*')
+						});
+					});
+				});
+				//사용법 : 버튼에 class="stopVideo"를 넣는다.  유투브 API를 사용하겠다는 옵션 ?enablejsapi=1 반드시 추가!!
+			</script>
+			<br><br><br>
+			<div class="board_wrap">
+				<div class="inner">
+					<div class="board">
+						<p class="title"><a href="#news" data-transition="slide" id="jsonload" style="color:#3159AD">NEWS</a></p>
+						<ul>
+							<li class="on main_news paint">
+								<a onclick="return false;" id="jsonload_main1">회사소식</a>
+								<div class="list">
+									<ul style="text-align:left" id="listArea_main">
+
+									</ul>
+								</div>
+							</li>
+							<li class="on main_news2">
+								<a onclick="return false;" id="jsonload_main2">언론기사</a>
+								<div class="list">
+									<ul>
+									</ul>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<!--메인화면에서 news ajax 부분 버튼 디자인 스크립트-->
+			<script type="text/javascript">
+				$(function() {
+					$(".main_news").click(function() {
+						$(".main_news2").removeClass("paint");
+						$(".main_news").addClass("paint");
+					});
+					$(".main_news2").click(function() {
+						$(".main_news").removeClass("paint");
+						$(".main_news2").addClass("paint");
+					});
+				})
+			</script>
+
+			<div class="board_wrap">
+				<div class="inner">
+					<div class="board">
+						<p class="title"><a href="#games" data-transition="slide" class="stopVideo" onclick="pauseVid(), pauseVid2()" style="color:#3159AD">GAME</a></p>
+						<ul class="bxslider">
+							<li><a href="#games_dancerush" data-transition="slide"><img src="./files/dancerush_main_brief.jpg" /></a></li>
+							<li><a href="#games_nostalgia" data-transition="slide"><img src="./files/nostalgia_main_brief.jpg" /></a></li>
+							<li><a href="#games_popn" data-transition="slide"><img src="./files/popn_main_brief.jpg" /></a></li>
+							<li><a href="#games_sdvx" data-transition="slide"><img src="./files/sdvx_main_brief.jpg" /></a></li>
+							<li><a href="#games_iidx" data-transition="slide"><img src="./files/iidx_main_brief.jpg" /></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+
+			<!-- bxSlider Javascript file -->
+			<script src="./js/jquery.bxslider.js"></script>
+			<script>
+				$(document).ready(function() {
+					$('.bxslider').bxSlider({
+						mode: 'fade',
+						moveSlides: 1,
+						slideMargin: 40,
+						infiniteLoop: true,
+						slideWidth: 660,
+						minSlides: 1,
+						maxSlides: 1,
+						speed: 500,
+						pause: 3300,
+						auto: true,
+						touchEnabled: false,
+					});
+				});
+			</script>
+
+
+		</div>
+		<footer id="footer">
+			<div class="inner">
+				<div class="link_wrap">
+					<div class="link">
+						<ul>
+							<li><a href="https://p.eagate.573.jp/gate/p/login.html" target="_blank"><img src="./files/icon_eamusement.jpg" alt="">eAMUSEMENT 사이트</a></li>
+							<li class="orange"><a href="http://shop.uniana.com/" target="_blank"><img src="./files/icon_shop.jpg" alt="">PLAYSHOP</a></li>
+							<li class="red"><a href="https://my.konami.net/" target="_blank"><img src="./files/icon_konami.png" alt="">KONAMI</a></li>
+						</ul>
+					</div>
+					<div class="sns">
+						<ul>
+							<li><a href="https://twitter.com/KONAMI573ch" target="_blank" style="color: #1DA1F2"><img src="./files/icon_tw.jpg" alt=""><br>&nbsp;KONAMI&nbsp;</a></li>
+							<li><a href="https://twitter.com/BEMANI_FanSite" target="_blank" style="color: #1DA1F2"><img src="./files/icon_tw.jpg" alt=""><br>&nbsp;BEMANI&nbsp;</a></li>
+							<li><a href="https://ko-kr.facebook.com/konami/" target="_blank" style="color: #4267B2"><img src="./files/icon_fb.jpg" alt=""><br>&nbsp;KONAMI&nbsp;</a></li>
+							<li><a href="https://ko-kr.facebook.com/bemani.asia/" target="_blank" style="color: #4267B2"><img src="./files/icon_fb.jpg" alt=""><br>&nbsp;BEMANI&nbsp;</a></li>
+							<li><a href="https://www.youtube.com/user/KONAMI573ch" target="_blank" style="color: #FF0303"><img src="./files/icon_ut.jpg" alt=""><br>&nbsp;YOUTUBE&nbsp;</a></li>
+							<li><a href="https://www.twitch.tv/uniana_games" target="_blank" style="color: #6441A4"><img src="./files/icon_twc.png" alt=""><br>&nbsp;TWITCH&nbsp;</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="copyright">
+					<div class="">
+						<a href="#games" data-transition="slide">게임</a>
+						<a href="#company" data-transition="slide">회사 소개</a>
+						<a href="#news" data-transition="slide">뉴스</a>
+					</div>
+					<p>© BEMANI Co.,Ltd.</p>
+				</div>
+
+
+
+
+			</div>
+		</footer>
+		<div data-role="footer" data-position="fixed">
+
+			<div data-role="main" class="ui-content">
+				<div class="btn_wrap" style="padding: 0 0 0 0;">
+					<a href="#myPopupDialog" data-rel="popup" data-position-to="window" data-transition="fade">
+						<p style="font-size:16px; color:#111;">김용헌(1505007)</p>
+					</a>
+				</div>
+
+				<!--프로필-->
+				<div data-role="popup" id="myPopupDialog">
+					<div data-role="header">
+						<h1>Profile</h1>
+					</div>
+
+					<div data-role="main" class="ui-content">
+						<div style="text-align:center">
+							<img src="./files/profile.jpg" class="profile_photo" align="middle" />
+						</div>
+						<br>
+						<p style="font-size: 12px;">이름 : 김용헌</p>
+						<p style="font-size: 12px;">학교 : 영남이공대학교</p>
+						<p style="font-size: 12px;">학번 : 1505007</p>
+						<p style="font-size: 12px;">학과 : 컴퓨터정보과</p>
+						<p style="font-size: 12px;">상태 : 재학 / 2학년</p>
+						<p style="font-size: 12px;">휴대폰 : <a href="tel:01045971575" target="_blank">010-4597-1575</a></p>
+						<p style="font-size: 12px;">이메일 : <a href="mailto:dlsrks4597@gmail.com">dlsrks4597@gmail.com</a></p>
+						<!-- <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-back ui-btn-icon-left" data-rel="back">Back</a> -->
+					</div>
+
+					<div data-role="footer">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<!--게임 카테고리-->
+	<div class="inner" id="games">
+		<div data-role="header">
+
+		</div>
+		<div data-role="content" id="container" class="sub">
+			<h2>GAME</h2>
+			<p class="subtitle_1">
+				KONAMI의 리듬게임 「BEMANI」 시리즈!!
+			</p>
+			<p>
+				<!--<img src="./files/dancerush_thumb.png" style="width: 30%; height: 30%; padding: 2px 2px 2px 2px;">-->
+				<div class="games_thumbnail">
+					<a href="#games_popn" data-transition="slide">
+						<img src="./files/popn_thumb.png">
+						<p class="desc_1">
+							Pop'n Music
+						</p>
+					</a>
+				</div>
+				<div class="games_thumbnail">
+					<a href="#games_dancerush" data-transition="slide">
+						<img src="./files/dancerush_thumb.png">
+						<p class="desc_1">
+							DANCE RUSH
+						</p>
+					</a>
+				</div>
+				<div class="games_thumbnail">
+					<a href="#games_iidx" data-transition="slide">
+						<img src="./files/iidx_thumb.png">
+						<p class="desc_1">
+							beatmania IIDX 26 Rootage
+						</p>
+					</a>
+				</div>
+				<div class="games_thumbnail">
+					<a href="#games_sdvx" data-transition="slide">
+						<img src="./files/sdvx_thumb.png">
+						<p class="desc_1">
+							SOUND VOLTEX
+						</p>
+					</a>
+				</div>
+				<div class="games_thumbnail">
+					<a href="#games_nostalgia" data-transition="slide">
+						<img src="./files/nostalgia_thumb.png">
+						<p class="desc_1">
+							Nostalgia
+						</p>
+					</a>
+				</div>
+				<div class="games_thumbnail">
+					<a href="#games_jubeat" data-transition="slide">
+						<img src="./files/jubeat_thumb.png">
+						<p class="desc_1">
+							Jubeat
+						</p>
+					</a>
+				</div>
+				<div class="games_thumbnail">
+					<a href="#games_reflecbeat" data-transition="slide">
+						<img src="./files/reflecbeat_thumb.png">
+						<p class="desc_1">
+							ReflecBeat
+						</p>
+					</a>
+				</div>
+				<div class="games_thumbnail">
+					<a href="#games_ddr" data-transition="slide">
+						<img src="./files/ddr_thumb.png">
+						<p class="desc_1">
+							DanceDance
+						</p>
+						<p class="desc_1">
+							Revolution
+						</p>
+					</a>
+				</div>
+				<div class="games_thumbnail">
+					<a href="#games_gitadora" data-transition="slide">
+						<img src="./files/gitadora_thumb.png">
+						<p class="desc_1">
+							GITADORA
+						</p>
+					</a>
+				</div>
+				<br /><br /><br /><br /><br /><br />
+
+		</div>
+		<div class="btn_wrap">
+			<a href="#home" class="btn_back stopVideo" onclick="pauseVid()" data-transition="slide" data-direction="reverse" style="color: #FAFAFA">목록</a>
+		</div><br /><br />
+		<footer id="footer">
+			<div class="inner">
+				<div class="link_wrap">
+					<div class="link">
+						<ul>
+							<li><a href="https://p.eagate.573.jp/gate/p/login.html" target="_blank"><img src="./files/icon_eamusement.jpg" alt="">eAMUSEMENT 사이트</a></li>
+							<li class="orange"><a href="http://shop.uniana.com/" target="_blank"><img src="./files/icon_shop.jpg" alt="">PLAYSHOP</a></li>
+							<li class="red"><a href="https://my.konami.net/" target="_blank"><img src="./files/icon_konami.png" alt="">KONAMI</a></li>
+						</ul>
+					</div>
+					<div class="sns">
+						<ul>
+							<li><a href="https://twitter.com/KONAMI573ch" target="_blank" style="color: #1DA1F2"><img src="./files/icon_tw.jpg" alt=""><br>&nbsp;KONAMI&nbsp;</a></li>
+							<li><a href="https://twitter.com/BEMANI_FanSite" target="_blank" style="color: #1DA1F2"><img src="./files/icon_tw.jpg" alt=""><br>&nbsp;BEMANI&nbsp;</a></li>
+							<li><a href="https://ko-kr.facebook.com/konami/" target="_blank" style="color: #4267B2"><img src="./files/icon_fb.jpg" alt=""><br>&nbsp;KONAMI&nbsp;</a></li>
+							<li><a href="https://ko-kr.facebook.com/bemani.asia/" target="_blank" style="color: #4267B2"><img src="./files/icon_fb.jpg" alt=""><br>&nbsp;BEMANI&nbsp;</a></li>
+							<li><a href="https://www.youtube.com/user/KONAMI573ch" target="_blank" style="color: #FF0303"><img src="./files/icon_ut.jpg" alt=""><br>&nbsp;YOUTUBE&nbsp;</a></li>
+							<li><a href="https://www.twitch.tv/uniana_games" target="_blank" style="color: #6441A4"><img src="./files/icon_twc.png" alt=""><br>&nbsp;TWITCH&nbsp;</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="copyright">
+					<div class="">
+						<a href="#games" data-transition="slide">게임</a>
+						<a href="#company" data-transition="slide">회사 소개</a>
+						<a href="#news" data-transition="slide">뉴스</a>
+					</div>
+					<p>© BEMANI Co.,Ltd.</p>
+				</div>
+
+
+
+			</div>
+		</footer>
+		<div data-role="footer" data-position="fixed">
+
+			<div data-role="main" class="ui-content">
+				<div class="btn_wrap" style="padding: 0 0 0 0;">
+					<a href="#myPopupDialog_games" data-rel="popup" data-position-to="window" data-transition="fade">
+						<p style="font-size:16px; color:#111;">김용헌(1505007)</p>
+					</a>
+				</div>
+
+				<!--프로필-->
+				<div data-role="popup" id="myPopupDialog_games">
+					<div data-role="header">
+						<h1>Profile</h1>
+					</div>
+
+					<div data-role="main" class="ui-content">
+						<div style="text-align:center">
+							<img src="./files/profile.jpg" class="profile_photo" align="middle" />
+						</div>
+						<br>
+						<p style="font-size: 12px;">이름 : 김용헌</p>
+						<p style="font-size: 12px;">학교 : 영남이공대학교</p>
+						<p style="font-size: 12px;">학번 : 1505007</p>
+						<p style="font-size: 12px;">학과 : 컴퓨터정보과</p>
+						<p style="font-size: 12px;">상태 : 재학 / 2학년</p>
+						<p style="font-size: 12px;">휴대폰 : <a href="tel:01045971575" target="_blank">010-4597-1575</a></p>
+						<p style="font-size: 12px;">이메일 : <a href="mailto:dlsrks4597@gmail.com">dlsrks4597@gmail.com</a></p>
+						<!-- <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-back ui-btn-icon-left" data-rel="back">Back</a> -->
+					</div>
+
+					<div data-role="footer">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div><!-- warp -->
+
+	<!--게임 팝픈뮤직 카테고리-->
+	<div class="inner" id="games_popn">
+		<div data-role="header">
+
+		</div>
+		<div data-role="content" id="container" class="sub">
+			<h2>Pop'n Music PEACE</h2>
+
+			<img src="./files/popn_banner.jpg" />
+			<br /><br />
+			<div data-role="tabs">
+				<div data-role="navbar">
+					<!--class="desc_5"-->
+					<ul>
+						<li><a href="#games_popn_tab1" data-transition="slide" class="stopVideo" onclick="pauseVid()">게임 소개</a></li>
+						<li><a href="#games_popn_tab2" data-transition="slide" class="stopVideo" onclick="pauseVid()">플레이 방법</a></li>
+						<li><a href="#games_popn_tab3" data-transition="slide" class="stopVideo">동영상</a></li>
+					</ul>
+					<br>
+				</div>
+				<div id="games_popn_tab1">
+					<div class="bbs_list">
+						<div>
+							<!--<p class="subtitle_4">
+								팝픈뮤직 피스
+							</p>-->
+							<p align="center">
+								<img src="./files/popn_logo.jpg" />
+							</p>
+							<br />
+							<p class="subtitle_1">
+								귀엽고 새로운 최고의 음악게임 등장!
+							</p>
+							<p class="subtitle_1">
+								팝픈뮤직의 20주년 기념작!
+							</p>
+							<br>
+							<p class="desc_1">
+								친숙한 음악을 다수 수록하여 다양한 플레이어들이 많은 팝픈뮤직 시리즈도 어느덧 20년!
+							</p><br />
+							<p class="desc_1">
+								pop'n music peace는 팝픈뮤직 20주년 기념작으로 출시되었으며, 그에 맞춰 다양한 20주년 이벤트를 진행하고 있습니다.
+								지금 팝픈뮤직의 최신작을 가까운 게임센터에서 만나보세요!
+							</p><br />
+							<p class="desc_1">
+								자세한 정보를 알고 싶다면 아래 버튼을 눌러주세요!
+							</p><br />
+							<div class="btn_wrap">
+								<a href="http://pop.uniana.com/game/popn/usaneko/p/top/index.php" class="btn_official" style="color: #FAFAFA">공식 사이트 바로가기</a>
+							</div>
+							<br />
+							<p align="center">
+								<img src="./files/popn_machine.jpg" />
+							</p>
+							<p class="desc_1">
+								<font style="font-weight: bold; font-size: 3.2vw;">DIMENSION</font>&emsp; W 840 x D 780 x H 1,940 (단위:mm)
+							</p>
+
+							<br />
+							<br />
+
+						</div>
+
+						<!--
+						<div class="right-button">
+							<a href="#" class="ui-btn" data-rel="back">뒤로가기</a>
+						</div>
+					</button> -->
+					</div>
+
+				</div>
+
+				<div id="games_popn_tab2">
+					<div class="bbs_list">
+						<div>
+							<p class="subtitle_4">
+								플레이 방법
+							</p>
+							<br>
+							<img src="./files/popn_how_basic_1.png"><br>
+							<img src="./files/popn_how_basic_2.png">
+							<p class="desc_5"><br>
+								팝픈 조작의 기본！ <font style="color: blue;">파랑</font>으로 이동해서, <font style="color: red;">빨강</font>으로 <font style="color: red;">결정</font>이다！
+							</p>
+							<br>
+							<img src="./files/popn_how_basic_3.png">
+							<p class="desc_5"><br>
+								옴악에 맞춰 내려오는 <font style="color: red;">「팝픈군」</font> 이 아래의 <font style="color: red;">「빨간라인」</font> 에 겹칠때 때를 노려, 같은 색의 버튼을 <font style="color: red;">PUSH！</font>
+							</p>
+							<p class="desc_5"><br>
+								타이밍이 맞으면 아래의「그루브게이지」가 UP！거꾸로 실패하면 DOWN...
+							</p>
+							<p class="desc_5"><br>
+								곡이 끝날 때 <font style="color: red;">그루브게이지의 클리어존까지 와 있으면 클리어！</font>
+							</p>
+							<br>
+							<img src="./files/popn_how_basic_4.png">
+							<p class="desc_5"><br>
+								롱 팝픈군이 판정 라인 위에 있는 동안 <font style="color: red;">버튼을 누르고있도록！</font>
+							</p>
+							<br>
+							<img src="./files/popn_how_basic_5.png">
+							<p class="desc_5"><br>
+								도중에 클리어 할 수 없어도 계속해서 플레이 가능해. 안심하고 플레이 하도록！
+							</p>
+							<br>
+						</div>
+					</div>
+				</div>
+
+				<div id="games_popn_tab3">
+					<div class="bbs_list">
+						<div>
+							<p class="subtitle_4">
+								플레이 영상
+							</p>
+							<br>
+							<!-- <div id="video_slide2">
+								<iframe width=100%; height=auto; src="https://www.youtube.com/embed/uWVYxHK3wNY?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+							</div>
+							<p class="desc_5">
+								KAC 8회 연속 챔피언 <font style="color: blue;">TATSU</font> 씨의 플레이 영상!
+							</p> -->
+							<br />
+							<video id="myVideo" controls="controls" width=100%; height=90%;>
+								<source src="./files/spacedog.mp4" type="video/mp4" />
+							</video>
+							<script>
+								var vid = document.getElementById("myVideo");
+
+								function playVid() {
+									vid.play();
+								}
+
+								function pauseVid() {
+									vid.pause();
+								}
+							</script>
+							<p class="desc_5">
+								모바일웹 제작자 <font style="color: blue;">김용헌</font> 이 직접 플레이한 영상!<br />
+								팝픈뮤직 최고의 인기곡 <font style="color: blue;">Space Dog</font>
+							</p>
+						</div>
+					</div>
+					<br /><br /><br /><br /><br />
+				</div>
+
+			</div>
+			<div class="btn_wrap">
+				<a href="#games" class="btn_back stopVideo" onclick="pauseVid()" data-transition="slide" data-direction="reverse" style="color: #FAFAFA">목록</a>
+			</div>
+
+		</div>
+		<br /><br />
+		<footer id="footer">
+			<div class="inner">
+				<div class="link_wrap">
+					<div class="link">
+						<ul>
+							<li><a href="https://p.eagate.573.jp/gate/p/login.html" target="_blank"><img src="./files/icon_eamusement.jpg" alt="">eAMUSEMENT 사이트</a></li>
+							<li class="orange"><a href="http://shop.uniana.com/" target="_blank"><img src="./files/icon_shop.jpg" alt="">PLAYSHOP</a></li>
+							<li class="red"><a href="https://my.konami.net/" target="_blank"><img src="./files/icon_konami.png" alt="">KONAMI</a></li>
+						</ul>
+					</div>
+					<div class="sns">
+						<ul>
+							<li><a href="https://twitter.com/KONAMI573ch" target="_blank" style="color: #1DA1F2"><img src="./files/icon_tw.jpg" alt=""><br>&nbsp;KONAMI&nbsp;</a></li>
+							<li><a href="https://twitter.com/BEMANI_FanSite" target="_blank" style="color: #1DA1F2"><img src="./files/icon_tw.jpg" alt=""><br>&nbsp;BEMANI&nbsp;</a></li>
+							<li><a href="https://ko-kr.facebook.com/konami/" target="_blank" style="color: #4267B2"><img src="./files/icon_fb.jpg" alt=""><br>&nbsp;KONAMI&nbsp;</a></li>
+							<li><a href="https://ko-kr.facebook.com/bemani.asia/" target="_blank" style="color: #4267B2"><img src="./files/icon_fb.jpg" alt=""><br>&nbsp;BEMANI&nbsp;</a></li>
+							<li><a href="https://www.youtube.com/user/KONAMI573ch" target="_blank" style="color: #FF0303"><img src="./files/icon_ut.jpg" alt=""><br>&nbsp;YOUTUBE&nbsp;</a></li>
+							<li><a href="https://www.twitch.tv/uniana_games" target="_blank" style="color: #6441A4"><img src="./files/icon_twc.png" alt=""><br>&nbsp;TWITCH&nbsp;</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="copyright">
+					<div class="">
+						<a href="#games" data-transition="slide">게임</a>
+						<a href="#company" data-transition="slide">회사 소개</a>
+						<a href="#news" data-transition="slide">뉴스</a>
+					</div>
+					<p>© BEMANI Co.,Ltd.</p>
+				</div>
+
+
+
+			</div>
+		</footer>
+		<div data-role="footer" data-position="fixed">
+
+			<div data-role="main" class="ui-content">
+				<div class="btn_wrap" style="padding: 0 0 0 0;">
+					<a href="#myPopupDialog_games_popn" data-rel="popup" data-position-to="window" data-transition="fade">
+						<p style="font-size:16px; color:#111;">김용헌(1505007)</p>
+					</a>
+				</div>
+
+				<!--프로필-->
+				<div data-role="popup" id="myPopupDialog_games_popn">
+					<div data-role="header">
+						<h1>Profile</h1>
+					</div>
+
+					<div data-role="main" class="ui-content">
+						<div style="text-align:center">
+							<img src="./files/profile.jpg" class="profile_photo" align="middle" />
+						</div>
+						<br>
+						<p style="font-size: 12px;">이름 : 김용헌</p>
+						<p style="font-size: 12px;">학교 : 영남이공대학교</p>
+						<p style="font-size: 12px;">학번 : 1505007</p>
+						<p style="font-size: 12px;">학과 : 컴퓨터정보과</p>
+						<p style="font-size: 12px;">상태 : 재학 / 2학년</p>
+						<p style="font-size: 12px;">휴대폰 : <a href="tel:01045971575" target="_blank">010-4597-1575</a></p>
+						<p style="font-size: 12px;">이메일 : <a href="mailto:dlsrks4597@gmail.com">dlsrks4597@gmail.com</a></p>
+						<!-- <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-back ui-btn-icon-left" data-rel="back">Back</a> -->
+					</div>
+
+					<div data-role="footer">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div><!-- warp -->
+
+
+	<!--게임 댄스러시 카테고리-->
+	<div class="inner" id="games_dancerush">
+		<div data-role="header">
+
+		</div>
+		<div data-role="content" id="container" class="sub">
+			<h2>DANCERUSH Stardom</h2>
+
+			<img src="./files/dancerush_banner.jpg" />
+			<br /><br />
+			<div data-role="tabs">
+				<div data-role="navbar">
+					<!--class="desc_5"-->
+					<ul>
+						<li><a href="#games_dancerush_tab1" data-transition="slide" class="stopVideo" onclick="pauseVid()">게임 소개</a></li>
+						<li><a href="#games_dancerush_tab2" data-transition="slide" class="stopVideo" onclick="pauseVid()">플레이 방법</a></li>
+						<li><a href="#games_dancerush_tab3" data-transition="slide" class="stopVideo" onclick="pauseVid()">동영상</a></li>
+					</ul>
+					<br>
+				</div>
+				<div id="games_dancerush_tab1">
+					<div class="bbs_list">
+						<div>
+							<!--<p class="subtitle_4">
+								팝픈뮤직 피스
+							</p>-->
+							<p align="center">
+								<img src="./files/dancerush_logo.png" />
+							</p>
+							<br />
+							<p class="subtitle_1">
+								새로운 감각의 댄스 게임 등장!
+							</p>
+							<br>
+							<div id="video_slide">
+								<iframe width=100%; height=100%; src="https://www.youtube.com/embed/boGpyksdm3o?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+							</div>
+							<!--유투브 API를 사용하겠다는 옵션 ?enablejsapi=1 반드시 추가!!-->
+
+							<p class="desc_1">
+								DANCERUSH STARDOM 트레일러 영상
+							</p>
+							<br><br>
+							<p class="desc_1">
+								DANCERUSH STARDOM은 DanceDanceRevolution 20주년 기념작으로, 화려한 대형 LED 매트릭스 위에서 자유롭게 댄스를 즐길 수 있는 새로운 감각의 댄스 게임입니다.
+							</p><br />
+							<p class="desc_1">
+								강력한 4개의 스피커와 우퍼를 통해 다양한 수록곡을 더욱 박진감 넘치는 댄스를 즐길 수 있으며, PREMIUM MODE를 사용하면 자신의 댄스 영상을 Youtube에 업로드 할 수 있습니다!
+							</p><br />
+							<p class="desc_1">
+								새로운 감각의 댄스 게임인 DANCERUSH STARDOM을 지금 바로 가까운 게임센터에서 만나보시길 바랍니다!
+							</p><br />
+							<p class="desc_1">
+								자세한 정보를 알고 싶다면 아래 버튼을 눌러주세요!
+							</p><br />
+							<div class="btn_wrap">
+								<a href="http://dancerush.uniana.com/game/dan/1st/top/entrance.html" class="btn_official" style="color: #FAFAFA">공식 사이트 바로가기</a>
+							</div>
+							<br />
+							<p align="center">
+								<img src="./files/dancerush_machine.jpg" />
+							</p>
+							<p class="desc_1">
+								<font style="font-weight: bold; font-size: 3.2vw;">DIMENSION</font>&emsp; W 1,480 x D 2,510 x H 2,210 (단위:mm)
+							</p>
+
+							<br />
+							<br />
+
+						</div>
+						<!--
+						<div class="right-button">
+							<a href="#" class="ui-btn" data-rel="back">뒤로가기</a>
+						</div>
+					</button> -->
+					</div>
+
+				</div>
+
+				<div id="games_dancerush_tab2">
+					<div class="bbs_list">
+						<div>
+							<p class="subtitle_4">
+								플레이 방법
+							</p>
+							<br>
+							<img src="./files/dancerush_how_basic_1.png">
+							<p class="desc_5"><br>
+								"DANCERUSH STARDOM"은 센서에서 플레이어의 움직임을 읽는다!
+							</p>
+							<p class="desc_5"><br>
+								멋지게! 즐겁게! 춤을 추어보자!
+							</p>
+							<br>
+							<img src="./files/dancerush_how_basic_2.png">
+							<table class="game-start2">
+								<tbody>
+									<tr>
+										<td><img src="./files/dancerush_how_basic_3.png"></td>
+										<td class="desc_5 dancerush_how_to_play">스테이지와 같은 위치를 밟는다! <br>리듬에 맞춰,
+											타이밍 좋게 밟으면 고득점！</td>
+									</tr>
+									<tr>
+										<td><img src="./files/dancerush_how_basic_4.png"></td>
+										<td class="desc_5">마크의 위치에 맞추어 슬라이드! <br>몸의 방향을 옆으로 돌리면 플레이하기 쉬워진다!</td>
+									</tr>
+									<tr>
+										<td><img src="./files/dancerush_how_basic_5.png"></td>
+										<td class="desc_5">타이밍에 맞춰 점프! <br>양 발을 확실하게 띄워보자!</td>
+									</tr>
+									<tr>
+										<td><img src="./files/dancerush_how_basic_6.png"></td>
+										<td class="desc_5">리듬을 타면서 중심을 낮추자.</td>
+									</tr>
+									<tr>
+										<td><img src="./files/dancerush_how_basic_7.png"></td>
+										<td class="desc_5">마크를 타이밍에 맞지 않게 밟으면, LIFE가 줄어든다.<br> LIFE가 없어지면 곡이 도중에 끝나버리니, <br>게이지가 0이 되지 않도록 멋지게 춤을 춰보자!</td>
+									</tr>
+								</tbody>
+								<br>
+								<br>
+
+							</table>
+							<br>
+							<br>
+							<p class="subtitle_1" style="color:black" font-size="bold">
+								동영상으로 복습해보자!
+							</p>
+							<br />
+							<div id="video_slide">
+								<iframe width=100%; height=100%; src="https://www.youtube.com/embed/M8d5Wjl9QtQ?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+							</div>
+							<br>
+							<br>
+						</div>
+					</div>
+				</div>
+
+				<div id="games_dancerush_tab3">
+					<div class="bbs_list">
+						<div>
+							<p class="subtitle_4">
+								플레이 영상
+							</p>
+							<br>
+							<div id="video_slide">
+								<iframe width=100%; height=100%; src="https://www.youtube.com/embed/h1uqOXpP_Sg?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+							</div>
+							<p class="desc_5">
+								The 8th KAC에서 화려한 플레이를 보여준 <font style="color: blue;">りりい</font> 씨의 플레이 영상!
+							</p>
+						</div>
+					</div>
+					<br /><br /><br /><br /><br />
+				</div>
+
+			</div>
+			<div class="btn_wrap">
+				<a href="#games" class="btn_back stopVideo" onclick="pauseVid()" data-transition="slide" data-direction="reverse" style="color: #FAFAFA">목록</a>
+			</div>
+
+		</div><br /><br />
+		<footer id="footer">
+			<div class="inner">
+				<div class="link_wrap">
+					<div class="link">
+						<ul>
+							<li><a href="https://p.eagate.573.jp/gate/p/login.html" target="_blank"><img src="./files/icon_eamusement.jpg" alt="">eAMUSEMENT 사이트</a></li>
+							<li class="orange"><a href="http://shop.uniana.com/" target="_blank"><img src="./files/icon_shop.jpg" alt="">PLAYSHOP</a></li>
+							<li class="red"><a href="https://my.konami.net/" target="_blank"><img src="./files/icon_konami.png" alt="">KONAMI</a></li>
+						</ul>
+					</div>
+					<div class="sns">
+						<ul>
+							<li><a href="https://twitter.com/KONAMI573ch" target="_blank" style="color: #1DA1F2"><img src="./files/icon_tw.jpg" alt=""><br>&nbsp;KONAMI&nbsp;</a></li>
+							<li><a href="https://twitter.com/BEMANI_FanSite" target="_blank" style="color: #1DA1F2"><img src="./files/icon_tw.jpg" alt=""><br>&nbsp;BEMANI&nbsp;</a></li>
+							<li><a href="https://ko-kr.facebook.com/konami/" target="_blank" style="color: #4267B2"><img src="./files/icon_fb.jpg" alt=""><br>&nbsp;KONAMI&nbsp;</a></li>
+							<li><a href="https://ko-kr.facebook.com/bemani.asia/" target="_blank" style="color: #4267B2"><img src="./files/icon_fb.jpg" alt=""><br>&nbsp;BEMANI&nbsp;</a></li>
+							<li><a href="https://www.youtube.com/user/KONAMI573ch" target="_blank" style="color: #FF0303"><img src="./files/icon_ut.jpg" alt=""><br>&nbsp;YOUTUBE&nbsp;</a></li>
+							<li><a href="https://www.twitch.tv/uniana_games" target="_blank" style="color: #6441A4"><img src="./files/icon_twc.png" alt=""><br>&nbsp;TWITCH&nbsp;</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="copyright">
+					<div class="">
+						<a href="#games" data-transition="slide">게임</a>
+						<a href="#company" data-transition="slide">회사 소개</a>
+						<a href="#news" data-transition="slide">뉴스</a>
+					</div>
+					<p>© BEMANI Co.,Ltd.</p>
+				</div>
+
+
+
+			</div>
+		</footer>
+		<div data-role="footer" data-position="fixed">
+
+			<div data-role="main" class="ui-content">
+				<div class="btn_wrap" style="padding: 0 0 0 0;">
+					<a href="#myPopupDialog_games_dancerush" data-rel="popup" data-position-to="window" data-transition="fade">
+						<p style="font-size:16px; color:#111;">김용헌(1505007)</p>
+					</a>
+				</div>
+
+				<!--프로필-->
+				<div data-role="popup" id="myPopupDialog_games_dancerush">
+					<div data-role="header">
+						<h1>Profile</h1>
+					</div>
+
+					<div data-role="main" class="ui-content">
+						<div style="text-align:center">
+							<img src="./files/profile.jpg" class="profile_photo" align="middle" />
+						</div>
+						<br>
+						<p style="font-size: 12px;">이름 : 김용헌</p>
+						<p style="font-size: 12px;">학교 : 영남이공대학교</p>
+						<p style="font-size: 12px;">학번 : 1505007</p>
+						<p style="font-size: 12px;">학과 : 컴퓨터정보과</p>
+						<p style="font-size: 12px;">상태 : 재학 / 2학년</p>
+						<p style="font-size: 12px;">휴대폰 : <a href="tel:01045971575" target="_blank">010-4597-1575</a></p>
+						<p style="font-size: 12px;">이메일 : <a href="mailto:dlsrks4597@gmail.com">dlsrks4597@gmail.com</a></p>
+						<!-- <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-back ui-btn-icon-left" data-rel="back">Back</a> -->
+					</div>
+
+					<div data-role="footer">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div><!-- warp -->
+
+
+	<!--게임 투덱 카테고리-->
+	<div class="inner" id="games_iidx">
+		<div class="header">
+
+		</div>
+		<div data-role="content" id="container" class="sub">
+			<h2>beatmania IIDX 26 Rootage</h2>
+
+			<img src="./files/iidx_banner.jpg" />
+			<br /><br />
+			<div data-role="tabs">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#games_iidx_tab1" data-transition="slide" onclick="pauseVid2()">게임 소개</a></li>
+						<li><a href="#games_iidx_tab2" data-transition="slide" onclick="pauseVid2()">플레이 방법</a></li>
+						<li><a href="#games_iidx_tab3" data-transition="slide">동영상</a></li>
+					</ul>
+					<br>
+				</div>
+				<div id="games_iidx_tab1">
+					<div class="bbs_list">
+						<div>
+							<!-- <p class="subtitle_4">
+								비트매니아 26번째 시리즈
+							</p> -->
+							<p align="center">
+								<img src="./files/iidx_logo.jpg" />
+							</p>
+							<br />
+							<p class="desc_1">
+								『도서관』을 테마로 한 beatmania IIDX의 최신작으로, 다가오는 beatmania IIDX의 20주년 기념 버전입니다.
+							</p>
+							<br />
+							<p class="desc_1">
+								전작에서 호평을 받은 『카메라』 기능이 더욱 강화되어 QR코드를 인식할 수 있는 기능이 추가되었으며, 그 외 초보자도 마니아도 더욱 편하게 플레이할 수 있도록 다양한 유저 편의 기능이 추가되었습니다!
+							</p>
+							<br>
+							<p class="desc_1">
+								더욱 강력해진 beatmania IIDX를 지금 게임센터에서 만나보세요!
+							</p><br />
+							<p class="desc_1">
+								자세한 정보를 알고 싶다면 아래 버튼을 눌러주세요!
+							</p><br />
+							<div class="btn_wrap">
+								<a href="http://beat.uniana.com/game/2dx/26/top/index.html" class="btn_official" style="color: #FAFAFA">공식 사이트 바로가기</a>
+							</div>
+							<br />
+							<p align="center">
+								<img src="./files/iidx_machine.jpg" />
+							</p>
+							<p class="desc_1">
+								<font style="font-weight: bold; font-size: 3.2vw;">DIMENSION</font>&emsp; W 1,723 x D 1,539 x H 2,344 (단위:mm)
+							</p>
+
+							<br />
+							<br />
+						</div>
+						<br /><br /><br /><br /><br />
+					</div>
+				</div>
+
+				<div id="games_iidx_tab2">
+					<div class="bbs_list">
+						<div>
+							<p class="subtitle_4">
+								플레이 방법
+							</p>
+							<br>
+							<img src="./files/iidx_how_basic_1.png"><br>
+							<p class="subtitle_1">
+								싱글 플레이（SP）
+							</p>
+							<p class="desc_5">
+								한쪽 턴테이블과 7개의 건반을 사용하는 플레이 스타일입니다.
+							</p>
+							<p class="subtitle_1">
+								더블 플레이（DP）
+							</p>
+							<p class="desc_5">
+								좌우의 턴테이블과 14개의 건반을 사용하는, 상급자용 플레이 스타일입니다.
+							</p>
+							<br>
+							<p class="desc_5">
+								턴테이블로 커서를 이동, 건반으로 플레이 스타일을 결정합니다.
+							</p><br>
+							<img src="./files/iidx_how_basic_2.png"><br><br>
+							<p class="desc_5">
+								beatmania IIDX에서는, 여러 게임 모드에서 플레이 방법을 선택할 수 있습니다.
+							</p>
+							<p class="desc_5">
+								처음 플레이하시는 분은, <font style="color: blue;">「Tutorial」</font> 부터 플레이 하시기를 추천합니다.
+							</p>
+							<br>
+							<img src="./files/iidx_how_basic_3.png"><br><br>
+							<p class="desc_5">
+								<font style="color: blue;">「Tutorial」</font> 에서는 beatmania IIDX의 기본적인 조작이나 게임 룰을 배울 수 있습니다.
+							</p>
+							<br>
+							<img src="./files/iidx_how_basic_4.png"><br><br>
+							<p class="desc_5">
+								다양한 악곡들 중, 좋아하는 곡을 골라 플레이합니다.
+							</p>
+							<p class="desc_5">
+								처음에는 조급해하지 말고, 난이도 1의 곡부터 천천히 익숙해져 갑시다.
+							</p>
+							<p class="desc_5">
+								플레이해서 즐거움을 느끼고, 자신에 맞는 난이도로 플레이 하는 것이 중요합니다.
+							</p>
+							<br>
+							<img src="./files/iidx_how_basic_5.png"><br><br>
+							<p class="desc_5">
+								beatmania IIDX를 본편이라고 말할 수 있는, 곡을 연주하는 화면입니다.
+							</p>
+							<p class="desc_5">
+								버튼의 위치를 헷갈리지 않도록 버튼의 위에 손을 두면 플레이하기 쉽습니다.
+							</p>
+							<p class="desc_5">
+								계속 하면 반드시 익숙해지니, 조급해하지 말고 하나씩 침착하게 눌러갑시다.
+							</p>
+							<br>
+							<img src="./files/iidx_how_basic_6.png"><br><br>
+							<p class="desc_5">
+								beatmania IIDX를 본편이라고 말할 수 있는, 곡을 연주하는 화면입니다.
+							</p>
+							<p class="desc_5">
+								버튼의 위치를 헷갈리지 않도록 버튼의 위에 손을 두면 플레이하기 쉽습니다.
+							</p>
+							<p class="desc_5">
+								계속 하면 반드시 익숙해지니, 조급해하지 말고 하나씩 침착하게 눌러갑시다.
+							</p>
+							<br />
+							<br />
+							<table class="game-start">
+								<tbody>
+									<tr>
+										<td>①성적 그래프</td>
+										<td>연주 중의 그루브 게이지의 변화를 나타냅니다.</td>
+									</tr>
+									<tr>
+										<td>②이번의 DJ LEVEL</td>
+										<td>AAA、AA、A～F　의 순서로, 당신의 플레이 평가가 표시됩니다.</td>
+									</tr>
+									<tr>
+										<td>③연주한 악곡정보</td>
+										<td>이번에 연주한 악곡의 플레이 스타일이나 난이도가 표시됩니다.</td>
+									</tr>
+									<tr>
+										<td>④토탈 노트수</td>
+										<td>이번에 플레이한 악곡의 종합 노트 수입니다.</td>
+									</tr>
+									<tr>
+										<td>⑤CLEAR TYPE</td>
+										<td>왼쪽에는 지금까지의 최고 CLEAR TYPE, 오른쪽에는 이번의 CLEAR TYPE이 표시됩니다.</td>
+									</tr>
+									<tr>
+										<td>⑥DJ LEVEL</td>
+										<td>왼쪽에는 지금까지의 최고 DJ LEVEL, 오른쪽에는 이번의 DJ LEVEL이 표시됩니다.</td>
+									</tr>
+									<tr>
+										<td>⑦EX SCORE</td>
+										<td>퍼팩트 그레이트를 2점, 일반 그레이트를 1점으로 하여 계산한 스코어가 표시됩니다.<br>
+											왼쪽에는 지금까지의 최고 스코어, 오른쪽에는 이번의 스코어가 표시됩니다.</td>
+									</tr>
+									<tr>
+										<td>⑧MISS COUNT</td>
+										<td>미스를 한 수가 표시됩니다.<br>
+											왼쪽에는 지금까지의 가장 적었던 MISS 수, 오른쪽에는 이번의 MISS 수가 표시됩니다.</td>
+									</tr>
+									<tr>
+										<td>⑨TARGET</td>
+										<td>선택한 타겟 스코어가 표시됩니다.</td>
+									</tr>
+									<tr>
+										<td>⑩각 판정의 수</td>
+										<td>판정을 획득한 수가 표시됩니다.</td>
+									</tr>
+									<tr>
+										<td>⑪COMBO BREAK</td>
+										<td>콤보가 끊긴 횟수가 표시됩니다.</td>
+									</tr>
+									<tr>
+										<td>⑫FAST＆SLOW</td>
+										<td>판정에서 음표를 누른 것이 빨랐던 횟수 &amp; 느렸던 횟수가 표시됩니다.</td>
+									</tr>
+									<tr>
+										<td>⑬악곡의 타이틀</td>
+										<td>연주한 악곡 명이 표시됩니다.</td>
+									</tr>
+									<tr>
+										<td>⑭스테이지 수</td>
+										<td>현재 몇 스테이지가 진행되는지 표시됩니다.</td>
+									</tr>
+								</tbody>
+							</table>
+							<br>
+						</div>
+					</div>
+				</div>
+
+				<div id="games_iidx_tab3">
+					<div class="bbs_list">
+						<div>
+							<p class="subtitle_4">
+								플레이 영상
+							</p>
+							<br>
+							<video id="myVideo2" controls="controls" width=100%; height=auto;>
+								<source src="./files/iidx_video.mp4" type="video/mp4" />
+							</video>
+							<script>
+								var vid2 = document.getElementById("myVideo2");
+
+								function playVid2() {
+									vid2.play();
+								}
+
+								function pauseVid2() {
+									vid2.pause();
+								}
+							</script>
+							<p class="desc_5">
+								모바일웹 제작자 <font style="color: blue;">김용헌</font> 이 직접 플레이한 영상입니다.
+							</p>
+						</div>
+					</div>
+					<br /><br /><br /><br /><br />
+				</div>
+
+			</div>
+			<div class="btn_wrap">
+				<a href="#games" class="btn_back" data-transition="slide" data-direction="reverse" onclick="pauseVid2()" style="color: #FAFAFA">목록</a>
+			</div>
+		</div><br /><br />
+		<footer id="footer">
+			<div class="inner">
+				<div class="link_wrap">
+					<div class="link">
+						<ul>
+							<li><a href="https://p.eagate.573.jp/gate/p/login.html" target="_blank"><img src="./files/icon_eamusement.jpg" alt="">eAMUSEMENT 사이트</a></li>
+							<li class="orange"><a href="http://shop.uniana.com/" target="_blank"><img src="./files/icon_shop.jpg" alt="">PLAYSHOP</a></li>
+							<li class="red"><a href="https://my.konami.net/" target="_blank"><img src="./files/icon_konami.png" alt="">KONAMI</a></li>
+						</ul>
+					</div>
+					<div class="sns">
+						<ul>
+							<li><a href="https://twitter.com/KONAMI573ch" target="_blank" style="color: #1DA1F2"><img src="./files/icon_tw.jpg" alt=""><br>&nbsp;KONAMI&nbsp;</a></li>
+							<li><a href="https://twitter.com/BEMANI_FanSite" target="_blank" style="color: #1DA1F2"><img src="./files/icon_tw.jpg" alt=""><br>&nbsp;BEMANI&nbsp;</a></li>
+							<li><a href="https://ko-kr.facebook.com/konami/" target="_blank" style="color: #4267B2"><img src="./files/icon_fb.jpg" alt=""><br>&nbsp;KONAMI&nbsp;</a></li>
+							<li><a href="https://ko-kr.facebook.com/bemani.asia/" target="_blank" style="color: #4267B2"><img src="./files/icon_fb.jpg" alt=""><br>&nbsp;BEMANI&nbsp;</a></li>
+							<li><a href="https://www.youtube.com/user/KONAMI573ch" target="_blank" style="color: #FF0303"><img src="./files/icon_ut.jpg" alt=""><br>&nbsp;YOUTUBE&nbsp;</a></li>
+							<li><a href="https://www.twitch.tv/uniana_games" target="_blank" style="color: #6441A4"><img src="./files/icon_twc.png" alt=""><br>&nbsp;TWITCH&nbsp;</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="copyright">
+					<div class="">
+						<a href="#games" data-transition="slide">게임</a>
+						<a href="#company" data-transition="slide">회사 소개</a>
+						<a href="#news" data-transition="slide">뉴스</a>
+					</div>
+					<p>© BEMANI Co.,Ltd.</p>
+				</div>
+
+
+
+			</div>
+		</footer>
+		<div data-role="footer" data-position="fixed">
+
+			<div data-role="main" class="ui-content">
+				<div class="btn_wrap" style="padding: 0 0 0 0;">
+					<a href="#myPopupDialog_games_iidx" data-rel="popup" data-position-to="window" data-transition="fade">
+						<p style="font-size:16px; color:#111;">김용헌(1505007)</p>
+					</a>
+				</div>
+
+				<!--프로필-->
+				<div data-role="popup" id="myPopupDialog_games_iidx">
+					<div data-role="header">
+						<h1>Profile</h1>
+					</div>
+
+					<div data-role="main" class="ui-content">
+						<div style="text-align:center">
+							<img src="./files/profile.jpg" class="profile_photo" align="middle" />
+						</div>
+						<br>
+						<p style="font-size: 12px;">이름 : 김용헌</p>
+						<p style="font-size: 12px;">학교 : 영남이공대학교</p>
+						<p style="font-size: 12px;">학번 : 1505007</p>
+						<p style="font-size: 12px;">학과 : 컴퓨터정보과</p>
+						<p style="font-size: 12px;">상태 : 재학 / 2학년</p>
+						<p style="font-size: 12px;">휴대폰 : <a href="tel:01045971575" target="_blank">010-4597-1575</a></p>
+						<p style="font-size: 12px;">이메일 : <a href="mailto:dlsrks4597@gmail.com">dlsrks4597@gmail.com</a></p>
+						<!-- <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-back ui-btn-icon-left" data-rel="back">Back</a> -->
+					</div>
+
+					<div data-role="footer">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div><!-- warp -->
+
+	<!--게임 사운드볼텍스 카테고리-->
+	<div class="inner" id="games_sdvx">
+		<div data-role="header">
+
+		</div>
+		<div data-role="content" id="container" class="sub">
+			<h2>SOUND VOLTEX VIVID WAVE</h2>
+
+			<img src="./files/sdvx_banner.jpg" />
+			<br /><br />
+			<div data-role="tabs">
+				<div data-role="navbar">
+					<!--class="desc_5"-->
+					<ul>
+						<li><a href="#games_sdvx_tab1" data-transition="slide" class="stopVideo" onclick="pauseVid()">게임 소개</a></li>
+						<li><a href="#games_sdvx_tab2" data-transition="slide" class="stopVideo" onclick="pauseVid()">플레이 방법</a></li>
+						<li><a href="#games_sdvx_tab3" data-transition="slide" class="stopVideo" onclick="pauseVid()">동영상</a></li>
+					</ul>
+					<br>
+				</div>
+				<div id="games_sdvx_tab1">
+					<div class="bbs_list">
+						<div>
+							<p align="center">
+								<img src="./files/sdvx_logo.jpg" />
+							</p>
+							<br />
+							<p class="subtitle_1">
+								너와 이어지는 미래의 무대!
+							</p>
+							<br>
+							<div id="video_slide">
+								<iframe width=100%; height=100%; src="https://www.youtube.com/embed/6zLNe6H_Gb8?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+							</div>
+							<!--유투브 API를 사용하겠다는 옵션 ?enablejsapi=1 반드시 추가!!-->
+
+							<p class="desc_1">
+								SOUND VOLTEX VIVID WAVE 트레일러 영상
+							</p>
+							<br><br>
+							<p class="desc_1">
+								사운드 볼텍스 시리즈의 최신작이 드디어 등장!
+							</p><br />
+							<p class="desc_1">
+								이번작품은 '라이브'를 테마로 하여, 3200%의 현장감을 느낄 수 있는 다양한 컨텐츠가 수록되어 있습니다.
+							</p><br />
+							<p class="desc_1">
+								캐릭터 애니메이션 강화와 더불어, 자신이 원하는 노래를 선택해 MIX플레이를 즐길 수 있는 파라다이스 모드로 라이브 현장에서 DJ를 하는 기분을 느낄 수 있습니다!
+							</p><br />
+							<p class="desc_1">
+								더욱 더 화려해지고 강력해진 사운드 볼텍스를 지금 게임장에서 만나보세요!
+							</p><br />
+							<p class="desc_1">
+								자세한 정보를 알고 싶다면 아래 버튼을 눌러주세요!
+							</p><br />
+							<div class="btn_wrap">
+								<a href="http://sv.uniana.com/top/index.html" class="btn_official" style="color: #FAFAFA">공식 사이트 바로가기</a>
+							</div>
+							<br />
+							<p align="center">
+								<img src="./files/sdvx_machine.jpg" />
+							</p>
+							<p class="desc_1">
+								<font style="font-weight: bold; font-size: 3.2vw;">DIMENSION</font>&emsp; W 1,032 x D 810 x H 2,400 (단위:mm)
+							</p>
+
+							<br />
+							<br />
+
+						</div>
+
+						<!--
+						<div class="right-button">
+							<a href="#" class="ui-btn" data-rel="back">뒤로가기</a>
+						</div>
+					</button> -->
+					</div>
+
+				</div>
+
+				<div id="games_sdvx_tab2">
+					<div class="bbs_list">
+						<div>
+							<p class="subtitle_4">
+								플레이 방법
+							</p>
+							<br>
+							<img src="./files/sdvx_how_basic_1.png"><br>
+							<img src="./files/sdvx_how_basic_2.png">
+							<p class="desc_5"><br>
+								<font style="color: blue;">LEVEL7이하의 곡</font>이라면 TRACK CRASH를 하더라도 <font style="color: blue;">다음 스테이지를 진행</font>할 수 있습니다!
+							</p>
+							<br>
+							<p class="desc_5"><br>
+								처음 플레이 하는 분도 안심하고 사볼을 플레이 하세요♪
+							</p>
+							<br>
+							<div id="video_slide">
+								<iframe width=100%; height=100%; src="https://www.youtube.com/embed/thU3LJNiVHE?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+							</div>
+							<p class="desc_5"><br>
+								동영상을 보면서 다시 복습♪
+							</p>
+						</div>
+						<br><br><br>
+					</div>
+				</div>
+
+				<div id="games_sdvx_tab3">
+					<div class="bbs_list">
+						<div>
+							<p class="subtitle_4">
+								플레이 영상
+							</p>
+							<br>
+							<div id="video_slide2">
+								<iframe width=100%; height=100%; src="https://www.youtube.com/embed/uVPpyY2_NBw?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+							</div>
+							<p class="desc_5">
+								사운드 볼텍스 인기 악곡 君は Fantasista 플레이 영상!
+							</p>
+							<br /><br />
+							<div id="video_slide2">
+								<iframe width=100%; height=100%; src="https://www.youtube.com/embed/TPQVZIw3LZs?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+							</div>
+							<p class="desc_5">
+								모바일웹 제작자 <font style="color: blue;">김용헌</font> 이 직접 플레이한 영상!
+							</p>
+						</div>
+					</div>
+					<br /><br /><br /><br /><br />
+				</div>
+
+			</div>
+			<div class="btn_wrap">
+				<a href="#games" class="btn_back stopVideo" onclick="pauseVid()" data-transition="slide" data-direction="reverse" style="color: #FAFAFA">목록</a>
+			</div>
+
+		</div>
+		<br /><br />
+		<footer id="footer">
+			<div class="inner">
+				<div class="link_wrap">
+					<div class="link">
+						<ul>
+							<li><a href="https://p.eagate.573.jp/gate/p/login.html" target="_blank"><img src="./files/icon_eamusement.jpg" alt="">eAMUSEMENT 사이트</a></li>
+							<li class="orange"><a href="http://shop.uniana.com/" target="_blank"><img src="./files/icon_shop.jpg" alt="">PLAYSHOP</a></li>
+							<li class="red"><a href="https://my.konami.net/" target="_blank"><img src="./files/icon_konami.png" alt="">KONAMI</a></li>
+						</ul>
+					</div>
+					<div class="sns">
+						<ul>
+							<li><a href="https://twitter.com/KONAMI573ch" target="_blank" style="color: #1DA1F2"><img src="./files/icon_tw.jpg" alt=""><br>&nbsp;KONAMI&nbsp;</a></li>
+							<li><a href="https://twitter.com/BEMANI_FanSite" target="_blank" style="color: #1DA1F2"><img src="./files/icon_tw.jpg" alt=""><br>&nbsp;BEMANI&nbsp;</a></li>
+							<li><a href="https://ko-kr.facebook.com/konami/" target="_blank" style="color: #4267B2"><img src="./files/icon_fb.jpg" alt=""><br>&nbsp;KONAMI&nbsp;</a></li>
+							<li><a href="https://ko-kr.facebook.com/bemani.asia/" target="_blank" style="color: #4267B2"><img src="./files/icon_fb.jpg" alt=""><br>&nbsp;BEMANI&nbsp;</a></li>
+							<li><a href="https://www.youtube.com/user/KONAMI573ch" target="_blank" style="color: #FF0303"><img src="./files/icon_ut.jpg" alt=""><br>&nbsp;YOUTUBE&nbsp;</a></li>
+							<li><a href="https://www.twitch.tv/uniana_games" target="_blank" style="color: #6441A4"><img src="./files/icon_twc.png" alt=""><br>&nbsp;TWITCH&nbsp;</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="copyright">
+					<div class="">
+						<a href="#games" data-transition="slide">게임</a>
+						<a href="#company" data-transition="slide">회사 소개</a>
+						<a href="#news" data-transition="slide">뉴스</a>
+					</div>
+					<p>© BEMANI Co.,Ltd.</p>
+				</div>
+
+
+
+			</div>
+		</footer>
+		<div data-role="footer" data-position="fixed">
+
+			<div data-role="main" class="ui-content">
+				<div class="btn_wrap" style="padding: 0 0 0 0;">
+					<a href="#myPopupDialog_games_sdvx" data-rel="popup" data-position-to="window" data-transition="fade">
+						<p style="font-size:16px; color:#111;">김용헌(1505007)</p>
+					</a>
+				</div>
+
+				<!--프로필-->
+				<div data-role="popup" id="myPopupDialog_games_sdvx">
+					<div data-role="header">
+						<h1>Profile</h1>
+					</div>
+
+					<div data-role="main" class="ui-content">
+						<div style="text-align:center">
+							<img src="./files/profile.jpg" class="profile_photo" align="middle" />
+						</div>
+						<br>
+						<p style="font-size: 12px;">이름 : 김용헌</p>
+						<p style="font-size: 12px;">학교 : 영남이공대학교</p>
+						<p style="font-size: 12px;">학번 : 1505007</p>
+						<p style="font-size: 12px;">학과 : 컴퓨터정보과</p>
+						<p style="font-size: 12px;">상태 : 재학 / 2학년</p>
+						<p style="font-size: 12px;">휴대폰 : <a href="tel:01045971575" target="_blank">010-4597-1575</a></p>
+						<p style="font-size: 12px;">이메일 : <a href="mailto:dlsrks4597@gmail.com">dlsrks4597@gmail.com</a></p>
+						<!-- <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-back ui-btn-icon-left" data-rel="back">Back</a> -->
+					</div>
+
+					<div data-role="footer">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div><!-- warp -->
+
+	<!--게임 노스텔지어 카테고리-->
+	<div class="inner" id="games_nostalgia">
+		<div data-role="header">
+
+		</div>
+		<div data-role="content" id="container" class="sub">
+			<h2>NOSTALGIA -ノスタルジア- Op.2</h2>
+
+			<img src="./files/nostalgia_banner.jpg" />
+			<br /><br />
+			<div data-role="tabs">
+				<div data-role="navbar">
+					<!--class="desc_5"-->
+					<ul>
+						<li><a href="#games_nostalgia_tab1" data-transition="slide" class="stopVideo" onclick="pauseVid()">게임 소개</a></li>
+						<li><a href="#games_nostalgia_tab2" data-transition="slide" class="stopVideo" onclick="pauseVid()">플레이 방법</a></li>
+						<li><a href="#games_nostalgia_tab3" data-transition="slide" class="stopVideo" onclick="pauseVid()">동영상</a></li>
+					</ul>
+					<br>
+				</div>
+				<div id="games_nostalgia_tab1">
+					<div class="bbs_list">
+						<div>
+							<p align="center">
+								<img src="./files/nostalgia_logo.jpg" />
+							</p>
+							<br />
+							<p class="subtitle_1">
+								음악이 없는 세계로... "노스텔지어 Op.2"
+							</p>
+							<br>
+							<div id="video_slide">
+								<iframe width=100%; height=100%; src="https://www.youtube.com/embed/Pa26oAuMwLw?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+							</div>
+							<!--유투브 API를 사용하겠다는 옵션 ?enablejsapi=1 반드시 추가!!-->
+
+							<p class="desc_1">
+								NOSTALGIA -ノスタルジア- Op.2 트레일러 영상
+							</p>
+							<br>
+							<br>
+							<p class="subtitle_1">
+								피아노형 음악게임 ‘NOSTALGIA’의 최신작인 'NOSTALGIA Op.2'.
+							</p>
+							<br>
+							<p class="desc_1">
+								음악에 맞춰 가볍게 건반을 치는 것만으로도 누구나 피아니스트가 될 수 있습니다!
+							</p><br />
+							<p class="desc_1">
+								새로운 선율이 흐르고 있는 게임센터에서
+								지금 바로 ‘NOSTALGIA Op.2’를 만나보시길 바랍니다!
+							</p><br />
+							<p class="desc_1">
+								자세한 정보를 알고 싶다면 아래 버튼을 눌러주세요!
+							</p><br />
+							<div class="btn_wrap">
+								<a href="http://nst.uniana.com/game/nostalgia/nst/top/entrance.html" class="btn_official" style="color: #FAFAFA">공식 사이트 바로가기</a>
+							</div>
+							<br />
+							<p align="center">
+								<img src="./files/nostalgia_machine.jpg" />
+							</p>
+							<p class="desc_1">
+								<font style="font-weight: bold; font-size: 3.2vw;">DIMENSION</font>&emsp; W 1,210 x D 810 x H 2,320 (단위:mm)
+							</p>
+
+							<br />
+							<br />
+
+						</div>
+
+						<!--
+						<div class="right-button">
+							<a href="#" class="ui-btn" data-rel="back">뒤로가기</a>
+						</div>
+					</button> -->
+					</div>
+
+				</div>
+
+				<div id="games_nostalgia_tab2">
+					<div class="bbs_list">
+						<div>
+							<p class="subtitle_4">
+								플레이 방법
+							</p>
+							<br>
+							<img src="./files/nostalgia_how_basic_1.png">
+							<p class="desc_5"><br>
+								「노스텔지어」는 피아노풍의 건반 디바이스로 연주합니다.
+							</p><br>
+							<img src="./files/nostalgia_how_basic_2.png">
+							<p class="desc_5"><br>
+								음표가 판정 라인에 겹치는 타이밍에 건반을 누릅시다. <br />
+								<font style="color: blue;">푸른 음표는 왼손,</font>
+								<font style="color: red;">붉은 음표는 오른손</font>으로 치면 보다 스무스하게 연주할 수 있습니다.
+							</p>
+							<br>
+							<p class="desc_5"><br>
+								악곡에 따라 등장하는 특별한 음표를 치는 것으로, <br /> 더욱 멋진 피아노 연주감을 느낄 수 있습니다.
+							</p><br /><br />
+							<table class="game-start2">
+								<tbody>
+									<tr>
+										<td><img src="./files/nostalgia_how_basic_3.png" style="vertical-align : center; height:70%"></td>
+										<td class="desc_5 dancerush_how_to_play">
+											특수한 음표 · 테누토 <br>띠가 이어지는 동안, 계속 건반을 누릅시다.</td>
+									</tr>
+									<tr>
+										<td><img src="./files/nostalgia_how_basic_4.png" style="vertical-align : center; height:70%"></td>
+										<td class="desc_5">특수한 음표 · 크레센도 <br>손가락을 좌우로 움직여 건반 위를 미끌어지듯이 연주합시다.</td>
+									</tr>
+									<tr>
+										<td><img src="./files/nostalgia_how_basic_5.png" style="vertical-align : center; height:70%"></td>
+										<td class="desc_5">특수한 음표 · 트릴 <br>띠가 이어지는 동안, 근접한 2개의 건반을 교대로 빠르게 칩니다.</td>
+									</tr>
+								</tbody>
+							</table>
+							<br>
+							<br>
+							<img src="./files/nostalgia_how_basic_6.png">
+							<p class="desc_5"><br>
+								손가락의 위치를 적당히 맞추고 있으면 OK.<br />
+								기분 좋게 연주를 즐겨 봅시다.
+							</p><br /><br />
+							<p class="subtitle_4">
+								모드 및 악곡 선택
+							</p><br /><br />
+							<img src="./files/nostalgia_how_basic_7.png">
+							<p class="desc_5"><br>
+								노스텔지어는, 각 모드에 표기되어 있는 악곡 수를 반드시 플레이 할 수 있습니다.
+							</p>
+							<br>
+							<img src="./files/nostalgia_how_basic_8.png">
+							<p class="desc_5"><br>
+								연주하고 싶은 악곡을 터치하여, 화면 오른쪽 하단의 버튼으로 결정합니다.<br />
+								책의 페이지를 넘기면, 다음 페이지를 볼 수 있습니다.<br />
+							</p>
+							<br>
+							<img src="./files/nostalgia_how_basic_9.png">
+							<p class="desc_5"><br>
+								난이도는<font style="color: green;">Normal</font> · <font style="color: orange;">Hard</font> · <font style="color: red;">Expert</font> 의 3종류가 있습니다.
+							</p><br /><br />
+							<p class="subtitle_4">
+								연주 결과
+							</p><br /><br />
+							<img src="./files/nostalgia_how_basic_10.png">
+							<p class="desc_5"><br>
+								악곡을 연 주 후, 연주 결과가 표시됩니다.
+							</p>
+							<br>
+						</div>
+					</div>
+				</div>
+
+				<div id="games_nostalgia_tab3">
+					<div class="bbs_list">
+						<div>
+							<p class="subtitle_4">
+								플레이 영상
+							</p>
+							<br>
+							<div id="video_slide2">
+								<iframe width=100%; height=100%; src="https://www.youtube.com/embed/XnkJQLLg2aA?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+							</div>
+							<p class="desc_5">
+								노스텔지어의 인기 악곡, nostos <font style="color: red;">Expert</font> 플레이 영상.
+							</p>
+							<br /><br />
+							<div id="video_slide2">
+								<iframe width=100%; height=100%; src="https://www.youtube.com/embed/C8C2CKHU-xY?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+							</div>
+							<p class="desc_5">
+								The 8th KAC 노스텔지어 부문 <font style="color: blue;">결승전</font> 영상.
+							</p>
+						</div>
+					</div>
+					<br /><br /><br /><br /><br />
+				</div>
+
+			</div>
+			<div class="btn_wrap">
+				<a href="#games" class="btn_back stopVideo" onclick="pauseVid()" data-transition="slide" data-direction="reverse" style="color: #FAFAFA">목록</a>
+			</div>
+
+		</div><br /><br />
+		<footer id="footer">
+			<div class="inner">
+				<div class="link_wrap">
+					<div class="link">
+						<ul>
+							<li><a href="https://p.eagate.573.jp/gate/p/login.html" target="_blank"><img src="./files/icon_eamusement.jpg" alt="">eAMUSEMENT 사이트</a></li>
+							<li class="orange"><a href="http://shop.uniana.com/" target="_blank"><img src="./files/icon_shop.jpg" alt="">PLAYSHOP</a></li>
+							<li class="red"><a href="https://my.konami.net/" target="_blank"><img src="./files/icon_konami.png" alt="">KONAMI</a></li>
+						</ul>
+					</div>
+					<div class="sns">
+						<ul>
+							<li><a href="https://twitter.com/KONAMI573ch" target="_blank" style="color: #1DA1F2"><img src="./files/icon_tw.jpg" alt=""><br>&nbsp;KONAMI&nbsp;</a></li>
+							<li><a href="https://twitter.com/BEMANI_FanSite" target="_blank" style="color: #1DA1F2"><img src="./files/icon_tw.jpg" alt=""><br>&nbsp;BEMANI&nbsp;</a></li>
+							<li><a href="https://ko-kr.facebook.com/konami/" target="_blank" style="color: #4267B2"><img src="./files/icon_fb.jpg" alt=""><br>&nbsp;KONAMI&nbsp;</a></li>
+							<li><a href="https://ko-kr.facebook.com/bemani.asia/" target="_blank" style="color: #4267B2"><img src="./files/icon_fb.jpg" alt=""><br>&nbsp;BEMANI&nbsp;</a></li>
+							<li><a href="https://www.youtube.com/user/KONAMI573ch" target="_blank" style="color: #FF0303"><img src="./files/icon_ut.jpg" alt=""><br>&nbsp;YOUTUBE&nbsp;</a></li>
+							<li><a href="https://www.twitch.tv/uniana_games" target="_blank" style="color: #6441A4"><img src="./files/icon_twc.png" alt=""><br>&nbsp;TWITCH&nbsp;</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="copyright">
+					<div class="">
+						<a href="#games" data-transition="slide">게임</a>
+						<a href="#company" data-transition="slide">회사 소개</a>
+						<a href="#news" data-transition="slide">뉴스</a>
+					</div>
+					<p>© BEMANI Co.,Ltd.</p>
+				</div>
+
+
+
+			</div>
+		</footer>
+
+		<div data-role="footer" data-position="fixed">
+
+			<div data-role="main" class="ui-content">
+				<div class="btn_wrap" style="padding: 0 0 0 0;">
+					<a href="#myPopupDialog_games_nostalgia" data-rel="popup" data-position-to="window" data-transition="fade">
+						<p style="font-size:16px; color:#111;">김용헌(1505007)</p>
+					</a>
+				</div>
+
+				<!--프로필-->
+				<div data-role="popup" id="myPopupDialog_games_nostalgia">
+					<div data-role="header">
+						<h1>Profile</h1>
+					</div>
+
+					<div data-role="main" class="ui-content">
+						<div style="text-align:center">
+							<img src="./files/profile.jpg" class="profile_photo" align="middle" />
+						</div>
+						<br>
+						<p style="font-size: 12px;">이름 : 김용헌</p>
+						<p style="font-size: 12px;">학교 : 영남이공대학교</p>
+						<p style="font-size: 12px;">학번 : 1505007</p>
+						<p style="font-size: 12px;">학과 : 컴퓨터정보과</p>
+						<p style="font-size: 12px;">상태 : 재학 / 2학년</p>
+						<p style="font-size: 12px;">휴대폰 : <a href="tel:01045971575" target="_blank">010-4597-1575</a></p>
+						<p style="font-size: 12px;">이메일 : <a href="mailto:dlsrks4597@gmail.com">dlsrks4597@gmail.com</a></p>
+						<!-- <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-back ui-btn-icon-left" data-rel="back">Back</a> -->
+					</div>
+
+					<div data-role="footer">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div><!-- warp -->
+
+	<!--게임 유비트 카테고리-->
+	<div class="inner" id="games_jubeat">
+		<div data-role="header">
+
+		</div>
+		<div data-role="content" id="container" class="sub">
+			<h2>jubeat festo</h2>
+
+			<img src="./files/jubeat_banner.jpg" />
+			<br /><br />
+			<div data-role="tabs">
+				<div data-role="navbar">
+					<!--class="desc_5"-->
+					<ul>
+						<li><a href="#games_jubeat_tab1" data-transition="slide" class="stopVideo" onclick="pauseVid()">게임 소개</a></li>
+						<li><a href="#games_jubeat_tab2" data-transition="slide" class="stopVideo" onclick="pauseVid()">플레이 방법</a></li>
+						<li><a href="#games_jubeat_tab3" data-transition="slide" class="stopVideo" onclick="pauseVid()">동영상</a></li>
+					</ul>
+					<br>
+				</div>
+				<div id="games_jubeat_tab1">
+					<div class="bbs_list">
+						<div>
+							<p align="center">
+								<img src="./files/jubeat_logo.png" />
+							</p>
+							<br />
+							<p class="subtitle_1">
+								언제라도, 환영합니다!
+							</p>
+							<br>
+							<p class="subtitle_1">
+								간단한 플레이 방법으로 누구나 베리~펀!
+							</p>
+							<br>
+							<p class="desc_1">
+								유비트 시리즈 10주년 기념작으로, 좀 더 유저 편의성을 강화한 유비트 시리즈 최신작입니다.
+							</p><br />
+							<p class="desc_1">
+								BEMANI 시리즈의 간판, jubeat의 최신작을<br />
+								지금 바로 가까운 게임센터에서 만나보시길 바랍니다!
+							</p><br />
+							<p class="desc_1">
+								자세한 정보를 알고 싶다면 아래 버튼을 눌러주세요!
+							</p><br />
+							<div class="btn_wrap">
+								<a href="http://jubeat.uniana.com/festo/top/index.html" class="btn_official" style="color: #FAFAFA">공식 사이트 바로가기</a>
+							</div>
+							<br />
+							<p align="center">
+								<img src="./files/jubeat_machine.jpg" />
+							</p>
+							<p class="desc_1">
+								<font style="font-weight: bold; font-size: 3.2vw;">DIMENSION</font>&emsp; W 745 x D 1,090 x H 1,930 (단위:mm)
+							</p>
+
+							<br />
+							<br />
+
+						</div>
+
+						<!--
+						<div class="right-button">
+							<a href="#" class="ui-btn" data-rel="back">뒤로가기</a>
+						</div>
+					</button> -->
+					</div>
+
+				</div>
+
+				<div id="games_jubeat_tab2">
+					<div class="bbs_list">
+						<div class="jubeat-center">
+							<p class="subtitle_4">
+								플레이 방법
+							</p>
+							<br><br><br>
+							<p class="subtitle_4">
+								방법은 간단합니다!
+							</p>
+							<img src="./files/jubeat_how_basic_1.png">
+							<p class="desc_5"><br>
+								jubeat(유비트)는 리듬에 맞춰 패널을 터치하는 리듬게임 !
+							</p><br>
+							<img src="./files/jubeat_how_basic_2.png">
+							<p class="desc_5"><br>
+								음악에 맞춰 패널에 <font style="color: blue;">무늬(마커)</font> 가 나오는 타이밍에 맞춰 터치해봅시다.
+							</p>
+							<img src="./files/jubeat_how_basic_3.png">
+							<p class="desc_5"><br>
+								이 타이밍이 <font style="color: orange;">퍼펙트!</font>
+							</p>
+							<img src="./files/jubeat_how_basic_4.png">
+							<p class="desc_5"><br>
+								마커의 출현 패턴을 예상해봅시다.
+							</p>
+							<br>
+							<img src="./files/jubeat_how_basic_5.png">
+							<p class="desc_5"><br>
+								스코어가 700,000점 이상이면 클리어입니다.
+							</p>
+							<br>
+							<img src="./files/jubeat_how_basic_6.png">
+							<p class="desc_5"><br>
+								클리어 하지 못해도 괜찮아!
+							</p>
+							<img src="./files/jubeat_how_basic_7.png">
+							<p class="desc_5"><br>
+								같이 매칭한 플레이어가 클리어하면 구원받을 수 있습니다.
+							</p>
+							<br>
+						</div>
+					</div>
+				</div>
+
+				<div id="games_jubeat_tab3">
+					<div class="bbs_list">
+						<div>
+							<p class="subtitle_4">
+								플레이 영상
+							</p>
+							<br>
+							<div id="video_slide2">
+								<iframe width=100%; height=100%; src="https://www.youtube.com/embed/A20v3g5GeK0?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+							</div>
+							<p class="desc_5">
+								전 세계인들에게 주목받은 인기 악곡, <font style="color: orange;">PPAP</font> 플레이 영상.
+							</p>
+							<br /><br />
+							<div id="video_slide2">
+								<iframe width=100%; height=100%; src="https://www.youtube.com/embed/KttNuLBatj8?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+							</div>
+							<p class="desc_5">
+								유비트 인기 악곡 <font style="color: red;">RED ZONE</font> 플레이 영상.
+							</p>
+						</div>
+					</div>
+					<br /><br /><br /><br /><br />
+				</div>
+
+			</div>
+			<div class="btn_wrap">
+				<a href="#games" class="btn_back stopVideo" onclick="pauseVid()" data-transition="slide" data-direction="reverse" style="color: #FAFAFA">목록</a>
+			</div>
+
+		</div><br /><br />
+		<footer id="footer">
+			<div class="inner">
+				<div class="link_wrap">
+					<div class="link">
+						<ul>
+							<li><a href="https://p.eagate.573.jp/gate/p/login.html" target="_blank"><img src="./files/icon_eamusement.jpg" alt="">eAMUSEMENT 사이트</a></li>
+							<li class="orange"><a href="http://shop.uniana.com/" target="_blank"><img src="./files/icon_shop.jpg" alt="">PLAYSHOP</a></li>
+							<li class="red"><a href="https://my.konami.net/" target="_blank"><img src="./files/icon_konami.png" alt="">KONAMI</a></li>
+						</ul>
+					</div>
+					<div class="sns">
+						<ul>
+							<li><a href="https://twitter.com/KONAMI573ch" target="_blank" style="color: #1DA1F2"><img src="./files/icon_tw.jpg" alt=""><br>&nbsp;KONAMI&nbsp;</a></li>
+							<li><a href="https://twitter.com/BEMANI_FanSite" target="_blank" style="color: #1DA1F2"><img src="./files/icon_tw.jpg" alt=""><br>&nbsp;BEMANI&nbsp;</a></li>
+							<li><a href="https://ko-kr.facebook.com/konami/" target="_blank" style="color: #4267B2"><img src="./files/icon_fb.jpg" alt=""><br>&nbsp;KONAMI&nbsp;</a></li>
+							<li><a href="https://ko-kr.facebook.com/bemani.asia/" target="_blank" style="color: #4267B2"><img src="./files/icon_fb.jpg" alt=""><br>&nbsp;BEMANI&nbsp;</a></li>
+							<li><a href="https://www.youtube.com/user/KONAMI573ch" target="_blank" style="color: #FF0303"><img src="./files/icon_ut.jpg" alt=""><br>&nbsp;YOUTUBE&nbsp;</a></li>
+							<li><a href="https://www.twitch.tv/uniana_games" target="_blank" style="color: #6441A4"><img src="./files/icon_twc.png" alt=""><br>&nbsp;TWITCH&nbsp;</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="copyright">
+					<div class="">
+						<a href="#games" data-transition="slide">게임</a>
+						<a href="#company" data-transition="slide">회사 소개</a>
+						<a href="#news" data-transition="slide">뉴스</a>
+					</div>
+					<p>© BEMANI Co.,Ltd.</p>
+				</div>
+
+
+
+			</div>
+		</footer>
+		<div data-role="footer" data-position="fixed">
+
+			<div data-role="main" class="ui-content">
+				<div class="btn_wrap" style="padding: 0 0 0 0;">
+					<a href="#myPopupDialog_games_jubeat" data-rel="popup" data-position-to="window" data-transition="fade">
+						<p style="font-size:16px; color:#111;">김용헌(1505007)</p>
+					</a>
+				</div>
+
+				<!--프로필-->
+				<div data-role="popup" id="myPopupDialog_games_jubeat">
+					<div data-role="header">
+						<h1>Profile</h1>
+					</div>
+
+					<div data-role="main" class="ui-content">
+						<div style="text-align:center">
+							<img src="./files/profile.jpg" class="profile_photo" align="middle" />
+						</div>
+						<br>
+						<p style="font-size: 12px;">이름 : 김용헌</p>
+						<p style="font-size: 12px;">학교 : 영남이공대학교</p>
+						<p style="font-size: 12px;">학번 : 1505007</p>
+						<p style="font-size: 12px;">학과 : 컴퓨터정보과</p>
+						<p style="font-size: 12px;">상태 : 재학 / 2학년</p>
+						<p style="font-size: 12px;">휴대폰 : <a href="tel:01045971575" target="_blank">010-4597-1575</a></p>
+						<p style="font-size: 12px;">이메일 : <a href="mailto:dlsrks4597@gmail.com">dlsrks4597@gmail.com</a></p>
+						<!-- <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-back ui-btn-icon-left" data-rel="back">Back</a> -->
+					</div>
+
+					<div data-role="footer">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div><!-- warp -->
+
+	<!--게임 리플렉비트 카테고리-->
+	<div class="inner" id="games_reflecbeat">
+		<div data-role="header">
+
+		</div>
+		<div data-role="content" id="container" class="sub">
+			<h2>REFLEC BEAT 悠久のリフレシア</h2>
+
+			<img src="./files/reflecbeat_banner.png" />
+			<br /><br />
+			<div data-role="tabs">
+				<div data-role="navbar">
+					<!--class="desc_5"-->
+					<ul>
+						<li><a href="#games_reflecbeat_tab1" data-transition="slide" class="stopVideo" onclick="pauseVid()">게임 소개</a></li>
+						<li><a href="#games_reflecbeat_tab2" data-transition="slide" class="stopVideo" onclick="pauseVid()">플레이 방법</a></li>
+						<li><a href="#games_reflecbeat_tab3" data-transition="slide" class="stopVideo" onclick="pauseVid()">동영상</a></li>
+					</ul>
+					<br>
+				</div>
+				<div id="games_reflecbeat_tab1">
+					<div class="bbs_list">
+						<div>
+							<p align="center">
+								<img src="./files/reflecbeat_logo.png" />
+							</p>
+							<br />
+							<p class="subtitle_1">
+								미지의 세계로 모험을 떠나자!
+							</p>
+							<br>
+							<p class="desc_1">
+								음악에 맞춰 오브젝트를 날려, 상대와 스코어로 경쟁하는 대전형 리듬액션게임 리플렉 비트!
+							</p><br />
+							<p class="desc_1">
+								시리즈 6번째 작품 ‘유구의 리플레시아’는 롤플레잉 게임을 모티브로 하여 완전히 새롭게 태어났습니다.
+							</p><br />
+							<p class="desc_1">
+								지금 바로 가까운 게임센터에서 즐겨주세요!!
+							</p><br />
+							<p class="desc_1">
+								자세한 정보를 알고 싶다면 아래 버튼을 눌러주세요!
+							</p><br />
+							<div class="btn_wrap">
+								<a href="http://rb.uniana.com/game/reflec/reflesia/p/top/index.php" class="btn_official" style="color: #FAFAFA">공식 사이트 바로가기</a>
+							</div>
+							<br />
+							<p align="center">
+								<img src="./files/reflecbeat_machine.jpg" />
+							</p>
+							<p class="desc_1">
+								<font style="font-weight: bold; font-size: 3.2vw;">DIMENSION</font>&emsp; W 799 x D 677 x H 1,929 (단위:mm)
+							</p>
+
+							<br />
+							<br />
+
+						</div>
+
+						<!--
+						<div class="right-button">
+							<a href="#" class="ui-btn" data-rel="back">뒤로가기</a>
+						</div>
+					</button> -->
+					</div>
+
+				</div>
+
+				<div id="games_reflecbeat_tab2">
+					<div class="bbs_list">
+						<div>
+							<p class="subtitle_4">
+								플레이 방법
+							</p>
+							<br><br><br>
+							<img src="./files/reflecbeat_how_basic_1.jpg"><br><br>
+							<img src="./files/reflecbeat_how_basic_2.jpg"><br><br>
+							<img src="./files/reflecbeat_how_basic_3.jpg"><br><br>
+							<div id="video_slide">
+								<iframe width=100%; height=100%; src="https://www.youtube.com/embed/XtxW9kc1-tg?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+							</div>
+							<p class="desc_5"><br>
+								튜토리얼 영상을 참고하자!
+							</p><br><br>
+						</div>
+					</div>
+				</div>
+
+				<div id="games_reflecbeat_tab3">
+					<div class="bbs_list">
+						<div>
+							<p class="subtitle_4">
+								플레이 영상
+							</p>
+							<br>
+							<div id="video_slide2">
+								<iframe width=100%; height=100%; src="https://www.youtube.com/embed/i3dPkYQuZzE?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+							</div>
+							<p class="desc_5">
+								비마니 인기곡 메들리, 50th Memorial Songs -The BEMANI History- <font style="color: orange;">HARD</font> 플레이 영상.
+							</p>
+							<br /><br />
+						</div>
+					</div>
+					<br /><br /><br /><br /><br />
+				</div>
+
+			</div>
+			<div class="btn_wrap">
+				<a href="#games" class="btn_back stopVideo" onclick="pauseVid()" data-transition="slide" data-direction="reverse" style="color: #FAFAFA">목록</a>
+			</div>
+
+		</div><br /><br />
+		<footer id="footer">
+			<div class="inner">
+				<div class="link_wrap">
+					<div class="link">
+						<ul>
+							<li><a href="https://p.eagate.573.jp/gate/p/login.html" target="_blank"><img src="./files/icon_eamusement.jpg" alt="">eAMUSEMENT 사이트</a></li>
+							<li class="orange"><a href="http://shop.uniana.com/" target="_blank"><img src="./files/icon_shop.jpg" alt="">PLAYSHOP</a></li>
+							<li class="red"><a href="https://my.konami.net/" target="_blank"><img src="./files/icon_konami.png" alt="">KONAMI</a></li>
+						</ul>
+					</div>
+					<div class="sns">
+						<ul>
+							<li><a href="https://twitter.com/KONAMI573ch" target="_blank" style="color: #1DA1F2"><img src="./files/icon_tw.jpg" alt=""><br>&nbsp;KONAMI&nbsp;</a></li>
+							<li><a href="https://twitter.com/BEMANI_FanSite" target="_blank" style="color: #1DA1F2"><img src="./files/icon_tw.jpg" alt=""><br>&nbsp;BEMANI&nbsp;</a></li>
+							<li><a href="https://ko-kr.facebook.com/konami/" target="_blank" style="color: #4267B2"><img src="./files/icon_fb.jpg" alt=""><br>&nbsp;KONAMI&nbsp;</a></li>
+							<li><a href="https://ko-kr.facebook.com/bemani.asia/" target="_blank" style="color: #4267B2"><img src="./files/icon_fb.jpg" alt=""><br>&nbsp;BEMANI&nbsp;</a></li>
+							<li><a href="https://www.youtube.com/user/KONAMI573ch" target="_blank" style="color: #FF0303"><img src="./files/icon_ut.jpg" alt=""><br>&nbsp;YOUTUBE&nbsp;</a></li>
+							<li><a href="https://www.twitch.tv/uniana_games" target="_blank" style="color: #6441A4"><img src="./files/icon_twc.png" alt=""><br>&nbsp;TWITCH&nbsp;</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="copyright">
+					<div class="">
+						<a href="#games" data-transition="slide">게임</a>
+						<a href="#company" data-transition="slide">회사 소개</a>
+						<a href="#news" data-transition="slide">뉴스</a>
+					</div>
+					<p>© BEMANI Co.,Ltd.</p>
+				</div>
+
+
+
+			</div>
+		</footer>
+
+		<div data-role="footer" data-position="fixed">
+
+			<div data-role="main" class="ui-content">
+				<div class="btn_wrap" style="padding: 0 0 0 0;">
+					<a href="#myPopupDialog_games_reflecbeat" data-rel="popup" data-position-to="window" data-transition="fade">
+						<p style="font-size:16px; color:#111;">김용헌(1505007)</p>
+					</a>
+				</div>
+
+				<!--프로필-->
+				<div data-role="popup" id="myPopupDialog_games_reflecbeat">
+					<div data-role="header">
+						<h1>Profile</h1>
+					</div>
+
+					<div data-role="main" class="ui-content">
+						<div style="text-align:center">
+							<img src="./files/profile.jpg" class="profile_photo" align="middle" />
+						</div>
+						<br>
+						<p style="font-size: 12px;">이름 : 김용헌</p>
+						<p style="font-size: 12px;">학교 : 영남이공대학교</p>
+						<p style="font-size: 12px;">학번 : 1505007</p>
+						<p style="font-size: 12px;">학과 : 컴퓨터정보과</p>
+						<p style="font-size: 12px;">상태 : 재학 / 2학년</p>
+						<p style="font-size: 12px;">휴대폰 : <a href="tel:01045971575" target="_blank">010-4597-1575</a></p>
+						<p style="font-size: 12px;">이메일 : <a href="mailto:dlsrks4597@gmail.com">dlsrks4597@gmail.com</a></p>
+						<!-- <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-back ui-btn-icon-left" data-rel="back">Back</a> -->
+					</div>
+
+					<div data-role="footer">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div><!-- warp -->
+
+	<!--게임 디디알 카테고리-->
+	<div class="inner" id="games_ddr">
+		<div data-role="header">
+
+		</div>
+		<div data-role="content" id="container" class="sub">
+			<h2>DanceDanceRevolution A20</h2>
+
+			<img src="./files/ddr_banner.jpg" />
+			<br /><br />
+			<div data-role="tabs">
+				<div data-role="navbar">
+					<!--class="desc_5"-->
+					<ul>
+						<li><a href="#games_ddr_tab1" data-transition="slide" class="stopVideo" onclick="pauseVid()">게임 소개</a></li>
+						<li><a href="#games_ddr_tab2" data-transition="slide" class="stopVideo" onclick="pauseVid()">플레이 방법</a></li>
+						<li><a href="#games_ddr_tab3" data-transition="slide" class="stopVideo" onclick="pauseVid()">동영상</a></li>
+					</ul>
+					<br>
+				</div>
+				<div id="games_ddr_tab1">
+					<div class="bbs_list">
+						<div>
+							<p align="center">
+								<img src="./files/ddr_logo.jpg" />
+							</p>
+							<br />
+							<p class="subtitle_1">
+								15년 전 전설이 돌아왔다!
+							</p>
+							<br>
+							<div id="video_slide">
+								<iframe width=100%; height=100%; src="https://www.youtube.com/embed/U8boOEQZUj0?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+							</div>
+							<!--유투브 API를 사용하겠다는 옵션 ?enablejsapi=1 반드시 추가!!-->
+
+							<p class="desc_1">
+								DanceDanceRevolution 20th Anniversary 공식 트레일러 영상
+							</p>
+							<br>
+							<br>
+							<p class="subtitle_1">
+								지금부터 당신도 DANCE MACHINE!
+							</p>
+							<br>
+							<p class="desc_1">
+								15년 전 리듬게임의 전설이, 애니메이션, 게임, 인터넷 뮤직까지 다수의 악곡 라인 업, 알기 쉬운 조작 화면 등 모두 즐길 수 있는 최신작으로 대한민국에 돌아왔습니다!
+							</p><br />
+							<p class="desc_1">
+								친근한 캐주얼한 흰색을 기반으로 한 디자인의 본체와 사이즈 업 해 보게 된 모니터 화면 등, 새롭게 진화한 DanceDanceRevolution 세계를 체험해보세요!
+							</p><br />
+							<p class="desc_1">
+								자세한 정보를 알고 싶다면 아래 버튼을 눌러주세요!
+							</p><br />
+							<div class="btn_wrap">
+								<a href="http://ddr.uniana.com/main.php" class="btn_official" style="color: #FAFAFA">공식 사이트 바로가기</a>
+							</div>
+							<br />
+							<p align="center">
+								<img src="./files/ddr_machine.jpg" />
+							</p>
+							<p class="desc_1">
+								<font style="font-weight: bold; font-size: 3.2vw;">DIMENSION</font>&emsp; W 1,780 x D 2,289 x H 2,185 (단위:mm)
+							</p>
+
+							<br />
+							<br />
+
+						</div>
+
+						<!--
+						<div class="right-button">
+							<a href="#" class="ui-btn" data-rel="back">뒤로가기</a>
+						</div>
+					</button> -->
+					</div>
+
+				</div>
+
+				<div id="games_ddr_tab2">
+					<div class="bbs_list">
+						<div>
+							<p class="subtitle_4">
+								플레이 방법
+							</p>
+							<br>
+							<img src="./files/ddr_how_basic_1.jpg">
+							<img src="./files/ddr_how_basic_2.jpg">
+							<img src="./files/ddr_how_basic_3.jpg">
+							<img src="./files/ddr_how_basic_4.jpg">
+							<img src="./files/ddr_how_basic_5.jpg"><br><br>
+							<div id="video_slide">
+								<iframe width=100%; height=100%; src="https://www.youtube.com/embed/uHBTJ_-haNw?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+							</div>
+							<p class="desc_5"><br>
+								튜토리얼 영상을 참고하자!
+							</p><br><br>
+						</div>
+					</div>
+				</div>
+
+				<div id="games_ddr_tab3">
+					<div class="bbs_list">
+						<div>
+							<p class="subtitle_4">
+								플레이 영상
+							</p>
+							<br>
+							<div id="video_slide2">
+								<iframe width=100%; height=100%; src="https://www.youtube.com/embed/L-fdnN3I1VE?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+							</div>
+							<p class="desc_5">
+								한국 DDR 챔피언 <font style="color: blue;">FEFEMZ</font> 씨의 The KAC 7th 대회 영상.
+							</p>
+							<br /><br />
+						</div>
+					</div>
+					<br /><br /><br /><br /><br />
+				</div>
+
+			</div>
+			<div class="btn_wrap">
+				<a href="#games" class="btn_back stopVideo" onclick="pauseVid()" data-transition="slide" data-direction="reverse" style="color: #FAFAFA">목록</a>
+			</div>
+
+		</div><br /><br />
+		<footer id="footer">
+			<div class="inner">
+				<div class="link_wrap">
+					<div class="link">
+						<ul>
+							<li><a href="https://p.eagate.573.jp/gate/p/login.html" target="_blank"><img src="./files/icon_eamusement.jpg" alt="">eAMUSEMENT 사이트</a></li>
+							<li class="orange"><a href="http://shop.uniana.com/" target="_blank"><img src="./files/icon_shop.jpg" alt="">PLAYSHOP</a></li>
+							<li class="red"><a href="https://my.konami.net/" target="_blank"><img src="./files/icon_konami.png" alt="">KONAMI</a></li>
+						</ul>
+					</div>
+					<div class="sns">
+						<ul>
+							<li><a href="https://twitter.com/KONAMI573ch" target="_blank" style="color: #1DA1F2"><img src="./files/icon_tw.jpg" alt=""><br>&nbsp;KONAMI&nbsp;</a></li>
+							<li><a href="https://twitter.com/BEMANI_FanSite" target="_blank" style="color: #1DA1F2"><img src="./files/icon_tw.jpg" alt=""><br>&nbsp;BEMANI&nbsp;</a></li>
+							<li><a href="https://ko-kr.facebook.com/konami/" target="_blank" style="color: #4267B2"><img src="./files/icon_fb.jpg" alt=""><br>&nbsp;KONAMI&nbsp;</a></li>
+							<li><a href="https://ko-kr.facebook.com/bemani.asia/" target="_blank" style="color: #4267B2"><img src="./files/icon_fb.jpg" alt=""><br>&nbsp;BEMANI&nbsp;</a></li>
+							<li><a href="https://www.youtube.com/user/KONAMI573ch" target="_blank" style="color: #FF0303"><img src="./files/icon_ut.jpg" alt=""><br>&nbsp;YOUTUBE&nbsp;</a></li>
+							<li><a href="https://www.twitch.tv/uniana_games" target="_blank" style="color: #6441A4"><img src="./files/icon_twc.png" alt=""><br>&nbsp;TWITCH&nbsp;</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="copyright">
+					<div class="">
+						<a href="#games" data-transition="slide">게임</a>
+						<a href="#company" data-transition="slide">회사 소개</a>
+						<a href="#news" data-transition="slide">뉴스</a>
+					</div>
+					<p>© BEMANI Co.,Ltd.</p>
+				</div>
+
+
+
+			</div>
+		</footer>
+		<div data-role="footer" data-position="fixed">
+
+			<div data-role="main" class="ui-content">
+				<div class="btn_wrap" style="padding: 0 0 0 0;">
+					<a href="#myPopupDialog_games_ddr" data-rel="popup" data-position-to="window" data-transition="fade">
+						<p style="font-size:16px; color:#111;">김용헌(1505007)</p>
+					</a>
+				</div>
+
+				<!--프로필-->
+				<div data-role="popup" id="myPopupDialog_games_ddr">
+					<div data-role="header">
+						<h1>Profile</h1>
+					</div>
+
+					<div data-role="main" class="ui-content">
+						<div style="text-align:center">
+							<img src="./files/profile.jpg" class="profile_photo" align="middle" />
+						</div>
+						<br>
+						<p style="font-size: 12px;">이름 : 김용헌</p>
+						<p style="font-size: 12px;">학교 : 영남이공대학교</p>
+						<p style="font-size: 12px;">학번 : 1505007</p>
+						<p style="font-size: 12px;">학과 : 컴퓨터정보과</p>
+						<p style="font-size: 12px;">상태 : 재학 / 2학년</p>
+						<p style="font-size: 12px;">휴대폰 : <a href="tel:01045971575" target="_blank">010-4597-1575</a></p>
+						<p style="font-size: 12px;">이메일 : <a href="mailto:dlsrks4597@gmail.com">dlsrks4597@gmail.com</a></p>
+						<!-- <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-back ui-btn-icon-left" data-rel="back">Back</a> -->
+					</div>
+
+					<div data-role="footer">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div><!-- warp -->
+
+	<!--게임 기타도라 카테고리-->
+	<div class="inner" id="games_gitadora">
+		<div data-role="header">
+
+		</div>
+		<div data-role="content" id="container" class="sub">
+			<h2>GITADORA EXCHAIN</h2>
+
+			<img src="./files/gitadora_banner.jpg" />
+			<br /><br />
+			<div data-role="tabs">
+				<div data-role="navbar">
+					<!--class="desc_5"-->
+					<ul>
+						<li><a href="#games_gitadora_tab1" data-transition="slide" class="stopVideo" onclick="pauseVid()">게임 소개</a></li>
+						<li><a href="#games_gitadora_tab2" data-transition="slide" class="stopVideo" onclick="pauseVid()">플레이 방법</a></li>
+						<li><a href="#games_gitadora_tab3" data-transition="slide" class="stopVideo" onclick="pauseVid()">동영상</a></li>
+					</ul>
+					<br>
+				</div>
+				<div id="games_gitadora_tab1">
+					<div class="bbs_list">
+						<div>
+							<p align="center">
+								<img src="./files/gitadora_logo.png" />
+							</p>
+							<br />
+							<p class="subtitle_1">
+								GITADORA 시리즈 최신작!
+							</p>
+							<br>
+							<br>
+							<p class="subtitle_1">
+								GuitarFreaks의 최신작!
+							</p>
+							<br>
+							<p class="desc_1">
+								5개의 넥 버튼과 피킹 레버를 이용하여 즐기는 리얼한 기타 연주!
+							</p><br />
+							<p class="desc_1">
+								GITADORA Drummania와의 세션 플레이도 가능합니다!
+							</p><br />
+							<p class="desc_1">
+								GITADORA EXCHAIN GuitarFreaks를 가까운 게임센터에서 만나보세요!
+							</p><br />
+							<p align="center">
+								<img src="./files/guitarfreaks_machine.jpg" />
+							</p>
+							<p class="desc_1">
+								<font style="font-weight: bold; font-size: 3.2vw;">DIMENSION</font>&emsp; W 842 x D 662 x H 1,986 (단위:mm)
+							</p>
+							<br />
+							<br />
+							<p class="subtitle_1">
+								GITADORA DrumMania의 최신작!
+							</p>
+							<br>
+							<p class="desc_1">
+								7개의 패드와 2개의 풋패달을 리듬에 맞춰 스틱으로 두드리거나 밟아보자!
+							</p><br />
+							<p class="desc_1">
+								GITADORAFreaks와의 세션 플레이도 가능합니다!
+							</p><br />
+							<p class="desc_1">
+								GITADORA EXCHAIN DrumMania를 가까운 게임센터에서 만나보세요!
+							</p><br />
+
+							<br />
+							<p align="center">
+								<img src="./files/drummania_machine.jpg" />
+							</p>
+							<p class="desc_1">
+								<font style="font-weight: bold; font-size: 3.2vw;">DIMENSION</font>&emsp; W 1,355 x D 850 x H 1,870 (단위:mm)
+							</p>
+							<br />
+							<br />
+							<p class="desc_1">
+								자세한 정보를 알고 싶다면 아래 버튼을 눌러주세요!
+							</p><br />
+							<div class="btn_wrap">
+								<a href="http://drum.uniana.com/p/eam/index.html" class="btn_official" style="color: #FAFAFA">공식 사이트 바로가기</a>
+							</div>
+							<br />
+							<br />
+							<br />
+							<br />
+
+						</div>
+
+						<!--
+						<div class="right-button">
+							<a href="#" class="ui-btn" data-rel="back">뒤로가기</a>
+						</div>
+					</button> -->
+					</div>
+
+				</div>
+
+				<div id="games_gitadora_tab2">
+					<div class="bbs_list">
+						<div>
+							<p class="subtitle_4">
+								플레이 방법
+							</p>
+							<br>
+							<br>
+							<br>
+							<p class="subtitle_4">
+								GuitarFreaks
+							</p>
+							<br>
+							<img src="./files/gitadora_how_basic_1.png">
+							<p class="desc_5"><br>
+								<font style="color: blue;">5개의 넥 버튼</font>을 누르면서, 리듬에 맞춰 <font style="color: blue;">피킹 레버</font>를 치자!
+							</p><br>
+							<img src="./files/gitadora_how_basic_2.png">
+							<p class="desc_5"><br>
+								기타 마크가 판정 라인에 오면, 기타 컨트롤러를 화살표 방향으로 흔들면서 <font style="color: blue;">피킹 레버</font>를 치자!<br />
+								성공하면 보너스가 가산돼. COMBO를 이어나가면서 <font style="color: orange;">하이 스코어</font>를 노려보자!!
+							</p><br>
+							<img src="./files/gitadora_how_basic_3.png">
+							<p class="desc_5"><br>
+								OPEN이라고 적힌 바가 오면, 모든 넥 버튼에서 손을 뗀 후 피킹 레버를 치자!
+							</p>
+							<br>
+							<br>
+							<p class="subtitle_4">
+								DrumMania
+							</p>
+							<br>
+							<img src="./files/gitadora_how_basic_4.png">
+							<p class="desc_5"><br>
+								리듬에 맞춰 <font style="color: blue;">7개의 패드</font>를 스틱으로 두드리거나, <font style="color: blue;">2개의 풋페달</font>을 밟아보자!
+							</p>
+							<br>
+							<br>
+							<p class="subtitle_4">
+								GuitarFreaks <br>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;× <br>
+								&nbsp;DrumMania
+							</p>
+							<br>
+							<img src="./files/gitadora_how_basic_5.png">
+							<p class="desc_5"><br>
+								GuitarFreaks와 DrumMania가 전부 있는 점포에서는, <font style="color: blue;">친구와 함께 악곡에 도전할 수 있는 세션</font>을 즐길 수 있어!
+							</p><br>
+							<p class="desc_5"><br>
+								친구만 해금한 악곡도 세션이라면 함께 플레이가 가능해! 친구를 불러, 아직 플레이하지 못한 악곡에 <font style="color: orange;">도전해보자!</font>
+							</p>
+							<br>
+							<br>
+						</div>
+					</div>
+				</div>
+
+				<div id="games_gitadora_tab3">
+					<div class="bbs_list">
+						<div>
+							<p class="subtitle_4">
+								플레이 영상
+							</p>
+							<br>
+							<div id="video_slide2">
+								<iframe width=100%; height=100%; src="https://www.youtube.com/embed/ApFTlYVQ3Uk?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+							</div>
+							<p class="desc_5">
+								GuitarFreaks × DrumMania <font style="color: blue;">2인 Session</font> 플레이 영상.
+							</p>
+							<br /><br />
+							<div id="video_slide2">
+								<iframe width=100%; height=100%; src="https://www.youtube.com/embed/FhFU98ryfUs?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+							</div>
+							<p class="desc_5">
+								GuitarFreaks × DrumMania <font style="color: orange;">3인 Session</font> 플레이 영상.
+							</p>
+						</div>
+					</div>
+					<br /><br /><br /><br /><br />
+				</div>
+
+			</div>
+			<div class="btn_wrap">
+				<a href="#games" class="btn_back stopVideo" onclick="pauseVid()" data-transition="slide" data-direction="reverse" style="color: #FAFAFA">목록</a>
+			</div>
+
+		</div><br /><br />
+		<footer id="footer">
+			<div class="inner">
+				<div class="link_wrap">
+					<div class="link">
+						<ul>
+							<li><a href="https://p.eagate.573.jp/gate/p/login.html" target="_blank"><img src="./files/icon_eamusement.jpg" alt="">eAMUSEMENT 사이트</a></li>
+							<li class="orange"><a href="http://shop.uniana.com/" target="_blank"><img src="./files/icon_shop.jpg" alt="">PLAYSHOP</a></li>
+							<li class="red"><a href="https://my.konami.net/" target="_blank"><img src="./files/icon_konami.png" alt="">KONAMI</a></li>
+						</ul>
+					</div>
+					<div class="sns">
+						<ul>
+							<li><a href="https://twitter.com/KONAMI573ch" target="_blank" style="color: #1DA1F2"><img src="./files/icon_tw.jpg" alt=""><br>&nbsp;KONAMI&nbsp;</a></li>
+							<li><a href="https://twitter.com/BEMANI_FanSite" target="_blank" style="color: #1DA1F2"><img src="./files/icon_tw.jpg" alt=""><br>&nbsp;BEMANI&nbsp;</a></li>
+							<li><a href="https://ko-kr.facebook.com/konami/" target="_blank" style="color: #4267B2"><img src="./files/icon_fb.jpg" alt=""><br>&nbsp;KONAMI&nbsp;</a></li>
+							<li><a href="https://ko-kr.facebook.com/bemani.asia/" target="_blank" style="color: #4267B2"><img src="./files/icon_fb.jpg" alt=""><br>&nbsp;BEMANI&nbsp;</a></li>
+							<li><a href="https://www.youtube.com/user/KONAMI573ch" target="_blank" style="color: #FF0303"><img src="./files/icon_ut.jpg" alt=""><br>&nbsp;YOUTUBE&nbsp;</a></li>
+							<li><a href="https://www.twitch.tv/uniana_games" target="_blank" style="color: #6441A4"><img src="./files/icon_twc.png" alt=""><br>&nbsp;TWITCH&nbsp;</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="copyright">
+					<div class="">
+						<a href="#games" data-transition="slide">게임</a>
+						<a href="#company" data-transition="slide">회사 소개</a>
+						<a href="#news" data-transition="slide">뉴스</a>
+					</div>
+					<p>© BEMANI Co.,Ltd.</p>
+				</div>
+
+
+
+			</div>
+		</footer>
+		<div data-role="footer" data-position="fixed">
+
+			<div data-role="main" class="ui-content">
+				<div class="btn_wrap" style="padding: 0 0 0 0;">
+					<a href="#myPopupDialog_games_gitadora" data-rel="popup" data-position-to="window" data-transition="fade">
+						<p style="font-size:16px; color:#111;">김용헌(1505007)</p>
+					</a>
+				</div>
+
+				<!--프로필-->
+				<div data-role="popup" id="myPopupDialog_games_gitadora">
+					<div data-role="header">
+						<h1>Profile</h1>
+					</div>
+
+					<div data-role="main" class="ui-content">
+						<div style="text-align:center">
+							<img src="./files/profile.jpg" class="profile_photo" align="middle" />
+						</div>
+						<br>
+						<p style="font-size: 12px;">이름 : 김용헌</p>
+						<p style="font-size: 12px;">학교 : 영남이공대학교</p>
+						<p style="font-size: 12px;">학번 : 1505007</p>
+						<p style="font-size: 12px;">학과 : 컴퓨터정보과</p>
+						<p style="font-size: 12px;">상태 : 재학 / 2학년</p>
+						<p style="font-size: 12px;">휴대폰 : <a href="tel:01045971575" target="_blank">010-4597-1575</a></p>
+						<p style="font-size: 12px;">이메일 : <a href="mailto:dlsrks4597@gmail.com">dlsrks4597@gmail.com</a></p>
+						<!-- <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-back ui-btn-icon-left" data-rel="back">Back</a> -->
+					</div>
+
+					<div data-role="footer">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div><!-- warp -->
+
+	<!--회사소개 카테고리-->
+	<div class="inner" id="company">
+		<div class="header">
+
+		</div>
+		<div data-role="content" id="container" class="sub">
+			<h2>COMPANY</h2>
+			<div data-role="tabs">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#company_tab1">회사 소개</a></li>
+						<li><a href="#company_tab2">사장 인사</a></li>
+						<li><a href="#company_tab3">지도</a></li>
+					</ul>
+					<br>
+				</div>
+				<div id="company_tab1">
+					<div class="bbs_list">
+						<div>
+							<p class="subtitle_4">
+								회사 소개
+							</p>
+							<p class="subtitle_1">
+								KONAMI의 리듬게임 「BEMANI」 시리즈!!
+							</p>
+							<p class="subtitle_2">
+								BEMANI는、
+							</p>
+							<br>
+							<p class="desc_1">
+								코나미 어뮤즈먼트의 리듬게임의 통일브랜드 이름입니다.
+								여기서는, 전국의 어뮤즈먼트 시설에서 놀 수 있는 최신 음악게임을 소개합니다.
+								게임과 음악의 융합이 가져다 줄 수 있는 아늑함을 꼭 즐겨주세요!
+							</p>
+							<br><br>
+							<p class="subtitle_2">
+								여러분에게 사랑 받고 기뻐하는 엔터테인먼트를 제공합니다!
+							</p>
+							<br>
+							<p class="desc_1">
+								어뮤즈먼트 사업은 오락 기계의 제작 · 생산 · 판매를 담당하고 있습니다.
+							</p>
+							<br>
+							<p class="desc_1">
+								코나미 그룹이 오랜 세월 축적 해 온 엔터테인먼트의 노하우를 살려 여러분에게 「사랑」 「기뻐하시는 '상품을 폭넓게 전개하고 있습니다.
+							</p>
+							<br><br>
+							<p class="subtitle_2">
+								오락 기계에 대해
+							</p>
+							<br>
+							<p class="desc_1">
+								BEMANI의 오락 기계는 음악 게임에 의한 붐 창출과 온라인 연결 서비스를 통해 새로운 가치를 만들어내는 등 새로운 게임 방법을 제안함으로써 고객의 기대에 부응 해 왔습니다.
+							</p>
+							<br>
+							<p class="desc_1">
+								오락 기계는 폭 넓은 연령층으로부터지지를받는 레저로 정착하고 요구가 다양 화되고 있습니다. KONAMI가 오랜 세월 축적 해 온 노하우를 활용하고 즐거움이 가득한 버라이어티가 풍부한 상품과 서비스를 계속해서 적극적으로 제안하고 있습니다.
+							</p>
+							<br><br>
+							<p class="subtitle_2">
+								e-amusement 서비스에 대해
+							</p>
+							<br>
+							<p class="desc_1">
+								KONAMI는 아케이드 게임을 중심으로 온라인으로 연결하는 'e-amusement "를 사용한"사람과 사람과의 커뮤니케이션 "을 촉진하는 고유의 서비스를 전개하고 있습니다.
+							</p>
+							<br>
+							<p class="desc_1">
+								"e-amusement '에서 놀이의 폭을 넓히는 동시에 서비스를 활용 한 새로운 제안을 진행하고 있습니다.
+							</p>
+							<br>
+							<img src="./files/e_amu_img.jpg">
+							<br>
+							<br>
+						</div>
+					</div>
+				</div>
+				<div id="company_tab2">
+					<div class="bbs_list">
+						<div>
+							<p class="subtitle_4">
+								사장 인사
+							</p>
+							<br><br>
+							<img src="./files/president.jpg" alt="dancerush">
+							<p class="subtitle_1">
+								평소보다 코나미 그룹의 제품이나 서비스에 관심을 기울여 주셔서 감사합니다.
+							</p>
+							<br>
+							<p class="desc_1">
+								당사 그룹은 올해 3 월 21 일자로 창업 50 주년을 맞이했습니다.
+								우리가 지금까지 성장을 계속하고 오셨습니다는 고객을 비롯해 직원을 포함한 관계 여러분의 여러분의 덕분이며, 진심으로 감사드립니다.
+							</p>
+							<br>
+							<p class="desc_1">
+								당사 그룹은 '엔터테인먼트'와 '스포츠'의 2 개 분야에서 '디지털 엔터테인먼트」 「놀이」 「게임 & 시스템」 「스포츠」의 사업을 전개하고 있으며, 이러한 사업에 양질의 제품과 서비스 제공을 통해 여러분의 더 건강한 생활에 도움을 드릴 수 사회에서 우리의 중요한 역할이라고 생각하고 있습니다.
+							</p>
+							<br>
+							<p class="desc_1">
+								1969 년 창업 이래, 우리는 시대의 물마루을 담은 혁신적인 제품, 서비스를 전세계에 제공함으로써 새로운 즐거움을 차례 차례로 창출하기 위해 노력하고 왔습니다.
+								앞으로도 코나미 그룹은 여러분의 신뢰와 기대에 부응하면서 다음 50 년을 향해 하나가되어 새로운 파두를 파악하기 위해 도전을 계속해 나가겠습니다. 계속 여러분의 지원, 편달을 받도록 부탁 말씀드립니다.
+							</p>
+							<br>
+							<p class="desc_4">대표 이사 코 우즈키 타쿠야</p>
+						</div>
+					</div>
+				</div>
+				<div id="company_tab3">
+					<div class="bbs_list">
+						<div>
+							<p class="title_1">BEMANI 개발팀의 위치</p>
+							<p class="desc_1">BEMANI는 KONAMI 본사에 속한 개발팀입니다.</p>
+							<p class="subtitle_1">KOMANI Corporation</p>
+							<div class="map-responsive">
+								<iframe
+									src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.451781487479!2d139.72881101521548!3d35.665876280197935!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188b788e915f45%3A0xe6b55b5051e07795!2z77yr77yv77yu77yh77yt77ypIOOCq-ODvOODieOCsuODvOODoOOCueODhuODvOOCt-ODp-ODsw!5e0!3m2!1sko!2skr!4v1559228066464!5m2!1sko!2skr"
+									width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+							</div>
+							<div class="tablest_1">
+								<ul>
+									<li>
+										<div class="th">Address</div>
+										<div class="td">일본 도쿄도 미나토구 아카사카 KONAMI 빌딩</div>
+									</li>
+									<li>
+										<div class="th">T E L</div>
+										<div class="td"><a href="tel:+81357710357">+81 3-5771-0357</a></div>
+									</li>
+								</ul>
+							</div>
+							<br />
+							<br />
+							<p class="title_1">한국 연동 회사 UNIANA의 위치</p>
+							<p class="desc_1">UNIANA는 한국의 BEMANI 상품 관리 회사입니다.</p>
+							<p class="subtitle_1">UNIANA</p>
+							<div class="map_wrap">
+								<iframe
+									src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3163.8404110756314!2d126.87665251531074!3d37.53525907980376!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c9e977e1e0f0f%3A0x2c67040065cd9184!2z7Jyg64uI7JWE64KY!5e0!3m2!1sko!2skr!4v1559227993239!5m2!1sko!2skr"
+									width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+							</div>
+							<div class="tablest_1">
+								<ul>
+									<li>
+										<div class="th">Address</div>
+										<div class="td">서울특별시 양천구 목동동로 377 UNIANA 빌딩</div>
+									</li>
+									<li>
+										<div class="th">T E L</div>
+										<div class="td"><a href="tel:0220615114">02-2061-5114</a></div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="btn_wrap">
+			<a href="#home" class="btn_back stopVideo" onclick="pauseVid()" data-transition="slide" data-direction="reverse" style="color: #FAFAFA">목록</a>
+		</div><br /><br />
+		<footer id="footer">
+			<div class="inner">
+				<div class="link_wrap">
+					<div class="link">
+						<ul>
+							<li><a href="https://p.eagate.573.jp/gate/p/login.html" target="_blank"><img src="./files/icon_eamusement.jpg" alt="">eAMUSEMENT 사이트</a></li>
+							<li class="orange"><a href="http://shop.uniana.com/" target="_blank"><img src="./files/icon_shop.jpg" alt="">PLAYSHOP</a></li>
+							<li class="red"><a href="https://my.konami.net/" target="_blank"><img src="./files/icon_konami.png" alt="">KONAMI</a></li>
+						</ul>
+					</div>
+					<div class="sns">
+						<ul>
+							<li><a href="https://twitter.com/KONAMI573ch" target="_blank" style="color: #1DA1F2"><img src="./files/icon_tw.jpg" alt=""><br>&nbsp;KONAMI&nbsp;</a></li>
+							<li><a href="https://twitter.com/BEMANI_FanSite" target="_blank" style="color: #1DA1F2"><img src="./files/icon_tw.jpg" alt=""><br>&nbsp;BEMANI&nbsp;</a></li>
+							<li><a href="https://ko-kr.facebook.com/konami/" target="_blank" style="color: #4267B2"><img src="./files/icon_fb.jpg" alt=""><br>&nbsp;KONAMI&nbsp;</a></li>
+							<li><a href="https://ko-kr.facebook.com/bemani.asia/" target="_blank" style="color: #4267B2"><img src="./files/icon_fb.jpg" alt=""><br>&nbsp;BEMANI&nbsp;</a></li>
+							<li><a href="https://www.youtube.com/user/KONAMI573ch" target="_blank" style="color: #FF0303"><img src="./files/icon_ut.jpg" alt=""><br>&nbsp;YOUTUBE&nbsp;</a></li>
+							<li><a href="https://www.twitch.tv/uniana_games" target="_blank" style="color: #6441A4"><img src="./files/icon_twc.png" alt=""><br>&nbsp;TWITCH&nbsp;</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="copyright">
+					<div class="">
+						<a href="#games" data-transition="slide">게임</a>
+						<a href="#company" data-transition="slide">회사 소개</a>
+						<a href="#news" data-transition="slide">뉴스</a>
+					</div>
+					<p>© BEMANI Co.,Ltd.</p>
+				</div>
+
+
+
+			</div>
+		</footer>
+		<div data-role="footer" data-position="fixed">
+
+			<div data-role="main" class="ui-content">
+				<div class="btn_wrap" style="padding: 0 0 0 0;">
+					<a href="#myPopupDialog_company" data-rel="popup" data-position-to="window" data-transition="fade">
+						<p style="font-size:16px; color:#111;">김용헌(1505007)</p>
+					</a>
+				</div>
+
+				<!--프로필-->
+				<div data-role="popup" id="myPopupDialog_company">
+					<div data-role="header">
+						<h1>Profile</h1>
+					</div>
+
+					<div data-role="main" class="ui-content">
+						<div style="text-align:center">
+							<img src="./files/profile.jpg" class="profile_photo" align="middle" />
+						</div>
+						<br>
+						<p style="font-size: 12px;">이름 : 김용헌</p>
+						<p style="font-size: 12px;">학교 : 영남이공대학교</p>
+						<p style="font-size: 12px;">학번 : 1505007</p>
+						<p style="font-size: 12px;">학과 : 컴퓨터정보과</p>
+						<p style="font-size: 12px;">상태 : 재학 / 2학년</p>
+						<p style="font-size: 12px;">휴대폰 : <a href="tel:01045971575" target="_blank">010-4597-1575</a></p>
+						<p style="font-size: 12px;">이메일 : <a href="mailto:dlsrks4597@gmail.com">dlsrks4597@gmail.com</a></p>
+						<!-- <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-back ui-btn-icon-left" data-rel="back">Back</a> -->
+					</div>
+
+					<div data-role="footer">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div><!-- warp -->
+
+
+	<!--뉴스 카테고리-->
+
+	<div id="news">
+
+		<div data-role="header">
+
+		</div>
+		<div data-role="contents" class="contents sub" id="container">
+			<div class="inner" data-role="tabs">
+				<h2>NEWS</h2>
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#news_tab1">회사소식</a></li>
+						<li><a href="#news_tab2" id="jsonload_news_media">언론소식</a></li>
+					</ul>
+				</div>
+				<!--<p class="title_1">
+      UNIANA NEWS      </p>-->
+				<div class="bbs_list" id="news_tab1">
+					<br><br><br>
+
+					<!-- <div data-role="listview" id="listArea" data-inset="true"> -->
+					<table>
+						<colgroup>
+							<col class="tit_col">
+							<col class="date_col">
+						</colgroup>
+
+						<tbody>
+							<tr>
+								<th>제목</th>
+								<th>등록일</th>
+							</tr>
+						</tbody>
+						<tbody data-role="listview" id="listArea">
+							<tr>
+								<td>내용</td>
+								<td>날짜</td>
+							</tr>
+						</tbody>
+
+					</table>
+					<div class="pagenation">
+						<a class="siteFtr_linkTxt" id="jsonload1">1</a>
+						<a class="siteFtr_linkTxt" id="jsonload2">2</a>
+						<a class="siteFtr_linkTxt" id="jsonload3">3</a>
+						<a class="siteFtr_linkTxt" id="jsonload4">4</a>
+						<a class="siteFtr_linkTxt" id="jsonload5">5</a>
+						<!-- <a class="siteFtr_linkTxt" href="">&gt;</a>
+						<a class="siteFtr_linkTxt" href="">&gt;&gt;</a> -->
+					</div>
+				</div>
+
+				<div class="bbs_list" id="news_tab2">
+					<br><br><br>
+					<table>
+						<colgroup>
+							<col class="tit_col">
+							<col class="date_col">
+						</colgroup>
+						<tbody>
+							<tr>
+								<th>제목</th>
+								<th>등록일</th>
+							</tr>
+						</tbody>
+
+						<tbody data-role="listview" id="listArea2">
+							<tr>
+								<td>내용</td>
+								<td>날짜</td>
+							</tr>
+						</tbody>
+
+						</tbody>
+					</table>
+					<div class="pagenation">
+						<a class="siteFtr_linkTxt" id="jsonload_news_media1">1</a>
+						<a class="siteFtr_linkTxt" id="jsonload_news_media2">2</a>
+						<a class="siteFtr_linkTxt" id="jsonload_news_media3">3</a>
+						<a class="siteFtr_linkTxt" id="jsonload_news_media4">4</a>
+						<a class="siteFtr_linkTxt" id="jsonload_news_media5">5</a>
+						<!-- <a class="siteFtr_linkTxt" href="">&gt;</a>
+						<a class="siteFtr_linkTxt" href="">&gt;&gt;</a> -->
+					</div>
+				</div>
+				<!--div class="search_wrap">
+				<div>
+					<select class="select_2" name="">
+						<option value="">제목</option>
+					</select>
+					<input type="text" name="" value="" placeholder="검색어를 입력하세요" class="input_1">
+					<input type="submit" name="" value="검색" class="btn_search">
+				</div>
+			</div>
+		</div-->
+			</div><!-- container -->
+
+		</div><!-- warp -->
+		<div class="btn_wrap">
+			<a href="#home" class="btn_back stopVideo" onclick="pauseVid()" data-transition="slide" data-direction="reverse" style="color: #FAFAFA">목록</a>
+		</div><br /><br />
+		<footer id="footer">
+			<div class="inner">
+				<div class="link_wrap">
+					<div class="link">
+						<ul>
+							<li><a href="https://p.eagate.573.jp/gate/p/login.html" target="_blank"><img src="./files/icon_eamusement.jpg" alt="">eAMUSEMENT 사이트</a></li>
+							<li class="orange"><a href="http://shop.uniana.com/" target="_blank"><img src="./files/icon_shop.jpg" alt="">PLAYSHOP</a></li>
+							<li class="red"><a href="https://my.konami.net/" target="_blank"><img src="./files/icon_konami.png" alt="">KONAMI</a></li>
+						</ul>
+					</div>
+					<div class="sns">
+						<ul>
+							<li><a href="https://twitter.com/KONAMI573ch" target="_blank" style="color: #1DA1F2"><img src="./files/icon_tw.jpg" alt=""><br>&nbsp;KONAMI&nbsp;</a></li>
+							<li><a href="https://twitter.com/BEMANI_FanSite" target="_blank" style="color: #1DA1F2"><img src="./files/icon_tw.jpg" alt=""><br>&nbsp;BEMANI&nbsp;</a></li>
+							<li><a href="https://ko-kr.facebook.com/konami/" target="_blank" style="color: #4267B2"><img src="./files/icon_fb.jpg" alt=""><br>&nbsp;KONAMI&nbsp;</a></li>
+							<li><a href="https://ko-kr.facebook.com/bemani.asia/" target="_blank" style="color: #4267B2"><img src="./files/icon_fb.jpg" alt=""><br>&nbsp;BEMANI&nbsp;</a></li>
+							<li><a href="https://www.youtube.com/user/KONAMI573ch" target="_blank" style="color: #FF0303"><img src="./files/icon_ut.jpg" alt=""><br>&nbsp;YOUTUBE&nbsp;</a></li>
+							<li><a href="https://www.twitch.tv/uniana_games" target="_blank" style="color: #6441A4"><img src="./files/icon_twc.png" alt=""><br>&nbsp;TWITCH&nbsp;</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="copyright">
+					<div class="">
+						<a href="#games" data-transition="slide">게임</a>
+						<a href="#company" data-transition="slide">회사 소개</a>
+						<a href="#news" data-transition="slide">뉴스</a>
+					</div>
+					<p>© BEMANI Co.,Ltd.</p>
+				</div>
+
+
+
+			</div>
+		</footer>
+		<div data-role="footer" data-position="fixed">
+
+			<div data-role="main" class="ui-content">
+				<div class="btn_wrap" style="padding: 0 0 0 0;">
+					<a href="#myPopupDialog_news" data-rel="popup" data-position-to="window" data-transition="fade">
+						<p style="font-size:16px; color:#111;">김용헌(1505007)</p>
+					</a>
+				</div>
+
+				<!--프로필-->
+				<div data-role="popup" id="myPopupDialog_news">
+					<div data-role="header">
+						<h1>Profile</h1>
+					</div>
+
+					<div data-role="main" class="ui-content">
+						<div style="text-align:center">
+							<img src="./files/profile.jpg" class="profile_photo" align="middle" />
+						</div>
+						<br>
+						<p style="font-size: 12px;">이름 : 김용헌</p>
+						<p style="font-size: 12px;">학교 : 영남이공대학교</p>
+						<p style="font-size: 12px;">학번 : 1505007</p>
+						<p style="font-size: 12px;">학과 : 컴퓨터정보과</p>
+						<p style="font-size: 12px;">상태 : 재학 / 2학년</p>
+						<p style="font-size: 12px;">휴대폰 : <a href="tel:01045971575" target="_blank">010-4597-1575</a></p>
+						<p style="font-size: 12px;">이메일 : <a href="mailto:dlsrks4597@gmail.com">dlsrks4597@gmail.com</a></p>
+						<!-- <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-back ui-btn-icon-left" data-rel="back">Back</a> -->
+					</div>
+
+					<div data-role="footer">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--BMK 카테고리-->
+	<div class="inner" id="bmk">
+		<div class="header">
+
+		</div>
+		<div data-role="content" id="container" class="sub">
+			<h2>BEMANI MASTER KOREA</h2>
+
+			<img src="./files/bmk_logo.png" />
+			<br /><br />
+			<div data-role="tabs">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#bmk_tab1">BMK란?</a></li>
+						<li><a href="#bmk_tab2">진행 순서</a></li>
+						<li><a href="#bmk_tab3">최종 우승</a></li>
+					</ul>
+					<br>
+				</div>
+				<div id="bmk_tab1">
+					<div class="bbs_list">
+						<div>
+							<p class="subtitle_4">
+								BEMANI MASTER KOREA란?
+							</p>
+							<p class="subtitle_1">
+								대한민국 최고의 BEMANI MASTER는 과연 누구인가?
+							</p>
+							<p class="subtitle_2">
+								BEMANI MASTER KOREA 2019는 대한민국 최고의 BEMANI MASTER를 선발하는 대회입니다.
+							</p>
+							<br>
+							<p class="desc_1">
+								이번 대회로 총 4회째 개최된 본 대회에서는
+								BEMANI 시리즈를 이용해 온라인 예선을 진행하고,
+								온라인 예선을 통과한 탑 플레이어들이 결승 라운드를 진행합니다!
+							</p>
+							<br>
+							<p class="desc_1">
+								대한민국의 BEMANI MASTER가 결정되는 스테이지를 두 눈으로 확인하세요!
+							</p>
+							<br><br><br>
+							<p class="subtitle_4">
+								BMK NEWS
+							</p><br>
+							<table>
+								<colgroup>
+									<col class="tit_col">
+									<col class="date_col">
+								</colgroup>
+
+								<tbody>
+									<tr>
+										<th>제목</th>
+										<th>등록일</th>
+									</tr>
+								</tbody>
+								<tbody data-role="listview" id="listArea_bmk">
+									<tr>
+										<td>내용</td>
+										<td>날짜</td>
+									</tr>
+								</tbody>
+
+							</table>
+							<div class="pagenation">
+								<a class="siteFtr_linkTxt" id="jsonload_bmk1">1</a>
+								<a class="siteFtr_linkTxt" id="jsonload_bmk2">2</a>
+								<!-- <a class="siteFtr_linkTxt" href="">&gt;</a>
+								<a class="siteFtr_linkTxt" href="">&gt;&gt;</a> -->
+							</div>
+							<br>
+							<br>
+							<br>
+						</div>
+					</div>
+				</div>
+				<div id="bmk_tab2">
+					<div class="bbs_list">
+						<div>
+							<p class="subtitle_4">
+								BMK 2019의 흐름
+							</p>
+							<br>
+							<table class="bmk-route">
+								<tbody>
+									<tr align="top">
+										<td><img src="./files/bmk_schedule_entry.png" style="vertical-align : top"></td>
+										<td class="desc_5">
+											<p style="color:#3159AD">
+												 대회 엔트리
+											</p>
+											<br>
+											 2019년 3월 28일(목) ~ 2019년 4월 10일(수)
+											<br><br>
+											<font style="color: red;"> [참가신청 종료!]</font>
+										</td>
+									</tr>
+									<tr>
+										<td><img src="./files/bmk_schedule_preliminary.png" style="vertical-align : top"></td>
+										<td class="desc_5">
+											<p style="color:#3159AD">
+												 온라인 예선
+											</p>
+											<br>
+											 전국 BEMANI 가동 게임장에서온라인 예선 진행!
+											<br><br>
+											2019년 4월 3일(수) 10:00 ~ 2019년 4월 16일 18:00
+										</td>
+									</tr>
+									<tr>
+										<td><img src="./files/bmk_schedule_final.png" style="vertical-align : top"></td>
+										<td class="desc_5">
+											<p style="color:#3159AD">
+												결승 대회
+											</p>
+											<br>
+											일산 KINTEX 메인 무대에서 개최 예정!
+											<br><br>
+											2019년 5월 11일 (토)
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							<br>
+							<br>
+							<br>
+						</div>
+					</div>
+				</div>
+				<div id="bmk_tab3">
+					<div class="bbs_list">
+						<div>
+							<p class="subtitle_4">
+								최종 우승자
+							</p>
+							<br><br>
+							<img src="./files/winner1.png">
+							<p class="subtitle_1">
+								DANCERUSH STARDOM 한국 최강자전 우승
+							</p>
+							<br>
+							<p class="desc_1">
+								대회무대에선 군머시기로 인해 말을 못했었습니다만... Finalist분들이 너무 잘하셔서 제가 우승을 할 줄은 전혀 몰랐는데 제 손으로 트로피를 쥐게 되었습니다.
+							</p>
+							<br>
+							<p class="desc_1">
+								BMK선수 분들과 관계자 분들을 포함한 여러분들께 다시한번 감사인사 드립니다. 감사합니다!!!
+							</p>
+							<br>
+							<p class="desc_1">
+								앞으로 댄스러쉬를 위해 열심히 뛰는 플레이어가 되도록 노력하겠습니다^^7 DANCERUSH ☆ Forever!!!!!
+							</p>
+							<br>
+							<p class="desc_4">시로천</p><br><br>
+							<img src="./files/winner2.png">
+							<p class="subtitle_1">
+								BEMANI MASTER KOREA 2019 우승
+							</p>
+							<br>
+							<p class="desc_1">
+								BMK2019 모두 수고 많으셨습니다.
+							</p>
+							<br>
+							<p class="desc_1">
+								어쩌다 보니 3연패중이네요.
+							</p>
+							<br>
+							<p class="desc_1">
+								다음대회도 우승할 수 있도록 열심히 준비할 테니 지켜봐 주시고 앞으로 많은 관심 부탁드립니다~!!
+							</p>
+							<br>
+							<p class="desc_4">GGD</p><br><br><br>
+							<p class="subtitle_1">
+								BMK 2019 다시보기
+							</p><br>
+							<a href="https://www.youtube.com/watch?v=52AGB7zbmsk" target="_blank"><img src="./files/bmk2019_logo.png" alt=""></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="btn_wrap">
+			<a href="#home" class="btn_back stopVideo" onclick="pauseVid()" data-transition="slide" data-direction="reverse" style="color: #FAFAFA">목록</a>
+		</div><br /><br />
+		<footer id="footer">
+			<div class="inner">
+				<div class="link_wrap">
+					<div class="link">
+						<ul>
+							<li><a href="https://p.eagate.573.jp/gate/p/login.html" target="_blank"><img src="./files/icon_eamusement.jpg" alt="">eAMUSEMENT 사이트</a></li>
+							<li class="orange"><a href="http://shop.uniana.com/" target="_blank"><img src="./files/icon_shop.jpg" alt="">PLAYSHOP</a></li>
+							<li class="red"><a href="https://my.konami.net/" target="_blank"><img src="./files/icon_konami.png" alt="">KONAMI</a></li>
+						</ul>
+					</div>
+					<div class="sns">
+						<ul>
+							<li><a href="https://twitter.com/KONAMI573ch" target="_blank" style="color: #1DA1F2"><img src="./files/icon_tw.jpg" alt=""><br>&nbsp;KONAMI&nbsp;</a></li>
+							<li><a href="https://twitter.com/BEMANI_FanSite" target="_blank" style="color: #1DA1F2"><img src="./files/icon_tw.jpg" alt=""><br>&nbsp;BEMANI&nbsp;</a></li>
+							<li><a href="https://ko-kr.facebook.com/konami/" target="_blank" style="color: #4267B2"><img src="./files/icon_fb.jpg" alt=""><br>&nbsp;KONAMI&nbsp;</a></li>
+							<li><a href="https://ko-kr.facebook.com/bemani.asia/" target="_blank" style="color: #4267B2"><img src="./files/icon_fb.jpg" alt=""><br>&nbsp;BEMANI&nbsp;</a></li>
+							<li><a href="https://www.youtube.com/user/KONAMI573ch" target="_blank" style="color: #FF0303"><img src="./files/icon_ut.jpg" alt=""><br>&nbsp;YOUTUBE&nbsp;</a></li>
+							<li><a href="https://www.twitch.tv/uniana_games" target="_blank" style="color: #6441A4"><img src="./files/icon_twc.png" alt=""><br>&nbsp;TWITCH&nbsp;</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="copyright">
+					<div class="">
+						<a href="#games" data-transition="slide">게임</a>
+						<a href="#company" data-transition="slide">회사 소개</a>
+						<a href="#news" data-transition="slide">뉴스</a>
+					</div>
+					<p>© BEMANI Co.,Ltd.</p>
+				</div>
+
+
+
+			</div>
+		</footer>
+		<div data-role="footer" data-position="fixed">
+
+			<div data-role="main" class="ui-content">
+				<div class="btn_wrap" style="padding: 0 0 0 0;">
+					<a href="#myPopupDialog_bmk" data-rel="popup" data-position-to="window" data-transition="fade">
+						<p style="font-size:16px; color:#111;">김용헌(1505007)</p>
+					</a>
+				</div>
+
+				<!--프로필-->
+				<div data-role="popup" id="myPopupDialog_bmk">
+					<div data-role="header">
+						<h1>Profile</h1>
+					</div>
+
+					<div data-role="main" class="ui-content">
+						<div style="text-align:center">
+							<img src="./files/profile.jpg" class="profile_photo" align="middle" />
+						</div>
+						<br>
+						<p style="font-size: 12px;">이름 : 김용헌</p>
+						<p style="font-size: 12px;">학교 : 영남이공대학교</p>
+						<p style="font-size: 12px;">학번 : 1505007</p>
+						<p style="font-size: 12px;">학과 : 컴퓨터정보과</p>
+						<p style="font-size: 12px;">상태 : 재학 / 2학년</p>
+						<p style="font-size: 12px;">휴대폰 : <a href="tel:01045971575" target="_blank">010-4597-1575</a></p>
+						<p style="font-size: 12px;">이메일 : <a href="mailto:dlsrks4597@gmail.com">dlsrks4597@gmail.com</a></p>
+						<!-- <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-back ui-btn-icon-left" data-rel="back">Back</a> -->
+					</div>
+
+					<div data-role="footer">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div><!-- warp -->
+
+
+
+	</div>
+
+</body>
+
+</html>
